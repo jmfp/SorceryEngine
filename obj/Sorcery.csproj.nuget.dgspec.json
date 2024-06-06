@@ -1,0 +1,252 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/Sorcery.csproj": {}
+  },
+  "projects": {
+    "/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/MonoGame.ImGuiNet/MonoGame.ImGuiNet/Monogame.ImGuiNet.csproj": {
+      "version": "1.1.0",
+      "restore": {
+        "projectUniqueName": "/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/MonoGame.ImGuiNet/MonoGame.ImGuiNet/Monogame.ImGuiNet.csproj",
+        "projectName": "MonoGame.ImGuiNet",
+        "projectPath": "/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/MonoGame.ImGuiNet/MonoGame.ImGuiNet/Monogame.ImGuiNet.csproj",
+        "packagesPath": "/Users/jesseprice/.nuget/packages/",
+        "outputPath": "/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/MonoGame.ImGuiNet/MonoGame.ImGuiNet/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/jesseprice/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "ImGui.NET": {
+              "target": "Package",
+              "version": "[1.90.1.1, )"
+            },
+            "MonoGame.Content.Builder.Task": {
+              "target": "Package",
+              "version": "[3.8.1.303, )"
+            },
+            "MonoGame.Framework.DesktopGL": {
+              "target": "Package",
+              "version": "[3.8.1.303, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.31, 6.0.31]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.31, 6.0.31]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.301/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Nez/Nez.Portable/Nez.MG38.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Nez/Nez.Portable/Nez.MG38.csproj",
+        "projectName": "Nez",
+        "projectPath": "/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Nez/Nez.Portable/Nez.MG38.csproj",
+        "packagesPath": "/Users/jesseprice/.nuget/packages/",
+        "outputPath": "/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Nez/Nez.Portable/obj/Nez.MG38/",
+        "projectStyle": "PackageReference",
+        "crossTargeting": true,
+        "configFilePaths": [
+          "/Users/jesseprice/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "MonoGame.Framework.DesktopGL": {
+              "target": "Package",
+              "version": "[3.8.0.1641, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.301/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/Sorcery.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/Sorcery.csproj",
+        "projectName": "Sorcery",
+        "projectPath": "/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/Sorcery.csproj",
+        "packagesPath": "/Users/jesseprice/.nuget/packages/",
+        "outputPath": "/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/jesseprice/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/MonoGame.ImGuiNet/MonoGame.ImGuiNet/Monogame.ImGuiNet.csproj": {
+                "projectPath": "/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/MonoGame.ImGuiNet/MonoGame.ImGuiNet/Monogame.ImGuiNet.csproj"
+              },
+              "/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Nez/Nez.Portable/Nez.MG38.csproj": {
+                "projectPath": "/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Nez/Nez.Portable/Nez.MG38.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MonoGame.Content.Builder.Task": {
+              "target": "Package",
+              "version": "[3.8.1.303, )"
+            },
+            "MonoGame.Framework.DesktopGL": {
+              "target": "Package",
+              "version": "[3.8.1.303, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.31, 6.0.31]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.osx-x64",
+              "version": "[6.0.31, 6.0.31]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.31, 6.0.31]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.301/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
