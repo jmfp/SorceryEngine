@@ -16,6 +16,8 @@ public class Editor : Game
 
     public Scene currentScene = new Scene();
 
+    GameObject selectedObject;
+
     //testing textures
     Texture2D testTexture;
 
@@ -50,7 +52,13 @@ public class Editor : Game
                 DepthFormat.Depth24);
             //dockspace_id = ImGui.GetID("MyDockspace");
             //scene management
-            currentScene.gameObjects.Add(new GameObject("New Object", new Vector3(0, 0, 0)));
+            currentScene.gameObjects.Add(new GameObject("New Object", new System.Numerics.Vector3(0, 0, 0)));
+            currentScene.gameObjects.Add(new GameObject("Demon", new System.Numerics.Vector3(0, 0, 0)));
+            currentScene.gameObjects.Add(new GameObject("Tilemap", new System.Numerics.Vector3(0, 0, 0)));
+            currentScene.gameObjects.Add(new GameObject("Game Manager", new System.Numerics.Vector3(0, 0, 0)));
+            currentScene.gameObjects.Add(new GameObject("UI Canvas", new System.Numerics.Vector3(0, 0, 0)));
+            Component testComponent = new Component("test");
+            currentScene.gameObjects[1].AddComponent(testComponent);
         base.Initialize();
     }
 
@@ -89,13 +97,28 @@ public class Editor : Game
         //ImGui.Image(GraphicsDevice, new System.Numerics.Vector2(1920.0f, 1080.0f));
         ImGui.Begin("Game");
         ImGui.Image(GuiRenderer.BindTexture(renderTarget), new System.Numerics.Vector2(1920, 1080));
-        ImGui.Begin("Inspector");
+        ImGui.Begin("Scene");
         for (int i = 0; i<currentScene.gameObjects.Count; i++){
             //ImGui.Text(currentScene.gameObjects[i].name);
-            ImGui.Selectable(currentScene.gameObjects[i].name);
+            if(ImGui.Button(currentScene.gameObjects[i].name)){
+                selectedObject = currentScene.gameObjects[i];
+            }
         }
+        
+        ImGui.Button("Add Empty Object");
         //ImGui.SliderFloat("Float Slider", ref sliderVal, 0, 100)
         ImGui.Begin("Project");
+        ImGui.Begin("Inspector");
+        if (selectedObject != null){
+            ImGui.Text(selectedObject.name);
+            ImGui.SliderFloat3("Position", ref selectedObject.position, 0, 360);
+            if(selectedObject.components.Count > 0){
+                //list all atttached components
+                for (int i = 0; i < selectedObject.components.Count; i++){
+                    ImGui.Text($"{selectedObject.components[i].name}");
+                }
+            }
+        }
         //ImGui End
         GuiRenderer.EndLayout();
 

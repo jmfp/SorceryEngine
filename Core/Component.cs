@@ -3,14 +3,14 @@ using Microsoft.Xna.Framework.Graphics;
 
 
 namespace Sorcery.Core{
-    public abstract class Component{
-    public string Name;
-    public Component(){
-
+    public class Component{
+    public string name;
+    public Component(string name){
+        this.name = name;
     }
 
-    public abstract void Update(GameTime gameTime, SpriteBatch spriteBatch);
-    public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch);
+    //public abstract void Update(GameTime gameTime, SpriteBatch spriteBatch);
+    //public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch);
 }
 }
 
