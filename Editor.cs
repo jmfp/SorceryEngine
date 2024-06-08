@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.ImGuiNet;
+using System.Collections.Generic;
+using System;
 using ImGuiNET;
 using Sorcery.Core;
 using Sorcery.Scenes;
@@ -15,6 +17,7 @@ public class Editor : Game
     bool show_native_examples = true;
 
     public Scene currentScene = new Scene();
+    public Input input;
 
     GameObject selectedObject;
 
@@ -57,8 +60,11 @@ public class Editor : Game
             currentScene.gameObjects.Add(new GameObject("Tilemap", new System.Numerics.Vector3(0, 0, 0)));
             currentScene.gameObjects.Add(new GameObject("Game Manager", new System.Numerics.Vector3(0, 0, 0)));
             currentScene.gameObjects.Add(new GameObject("UI Canvas", new System.Numerics.Vector3(0, 0, 0)));
-            Component testComponent = new Component("test");
-            currentScene.gameObjects[1].AddComponent(testComponent);
+            SpriteRenderer spriteRenderer = new SpriteRenderer("Content/Assets/Sprites/demon.png", GraphicsDevice);
+            spriteRenderer.scale = new Vector2(2, 2);
+            currentScene.gameObjects[1].AddComponent(spriteRenderer);
+            currentScene.gameObjects[1].AddComponent(new Input(5));
+            input = currentScene.gameObjects[1].GetComponent<Input>() as Input;
         base.Initialize();
     }
 
@@ -76,6 +82,9 @@ public class Editor : Game
             Exit();
 
         // TODO: Add your update logic here
+
+        input.TopDown8();
+        
 
         base.Update(gameTime);
     }
@@ -111,7 +120,9 @@ public class Editor : Game
         ImGui.Begin("Inspector");
         if (selectedObject != null){
             ImGui.Text(selectedObject.name);
-            ImGui.SliderFloat3("Position", ref selectedObject.position, 0, 360);
+            ImGui.SliderFloat("Position X", ref selectedObject.position.X, 0, 10000);
+            ImGui.SliderFloat("Position Y", ref selectedObject.position.Y, 0, 10000);
+            ImGui.SliderFloat("Position Z", ref selectedObject.position.Z, 0, 10000);
             if(selectedObject.components.Count > 0){
                 //list all atttached components
                 for (int i = 0; i < selectedObject.components.Count; i++){
@@ -144,6 +155,9 @@ public class Editor : Game
         GraphicsDevice.Clear(Color.CornflowerBlue);
         _spriteBatch.Begin(SpriteSortMode.BackToFront, samplerState: SamplerState.PointClamp);
         _spriteBatch.Draw(testTexture, new Vector2(100, 100), Color.White);
+        SpriteRenderer ren = currentScene.gameObjects[1].GetComponent<SpriteRenderer>() as SpriteRenderer;
+        ren.Draw(_spriteBatch);
+        //currentScene.gameObjects[1].components[0].Draw(_spriteBatch);
         _spriteBatch.End();
         // Drop the render target
         GraphicsDevice.SetRenderTarget(null);

@@ -5,12 +5,10 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Sorcery.Core{
     public class Component{
     public string name;
-    public Component(string name){
-        this.name = name;
-    }
+    public GameObject parent;
 
     //public abstract void Update(GameTime gameTime, SpriteBatch spriteBatch);
-    //public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch);
+    //public virtual void Draw(SpriteBatch spriteBatch){}
 }
 }
 
