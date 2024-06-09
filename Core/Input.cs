@@ -14,29 +14,29 @@ namespace Sorcery.Core{
             this.minSpeed = maxSpeed;
         }
 
-        public void TopDown8(){
-            if(Keyboard.GetState().IsKeyDown(Keys.A)) {
-                movementVector.X = -1f;
+        public void TopDown8(KeyboardState state){
+            if(state.IsKeyDown(Keys.A)) {
+                movementVector.X -= maxSpeed;
             }
-            if(Keyboard.GetState().IsKeyDown(Keys.D)) {
+            if(state.IsKeyDown(Keys.D)) {
                 movementVector.X = 1f;
             }
-            if(Keyboard.GetState().IsKeyDown(Keys.W)) {
+            if(state.IsKeyDown(Keys.W)) {
                 movementVector.Y = -1f;
             }
-            if(Keyboard.GetState().IsKeyDown(Keys.S)) {
+            if(state.IsKeyDown(Keys.S)) {
                 movementVector.Y = 1f;
             }
-            if(Keyboard.GetState().IsKeyUp(Keys.A)) {
+            if(state.IsKeyUp(Keys.A)) {
                 movementVector.X = 0f;
             }
-            if(Keyboard.GetState().IsKeyUp(Keys.D)) {
+            if(state.IsKeyUp(Keys.D)) {
                 movementVector.X = 0f;
             }
-            if(Keyboard.GetState().IsKeyUp(Keys.W)) {
+            if(state.IsKeyUp(Keys.W)) {
                 movementVector.Y = 0f;
             }
-            if(Keyboard.GetState().IsKeyUp(Keys.S)) {
+            if(state.IsKeyUp(Keys.S)) {
                 movementVector.Y = 0f;
             }
 

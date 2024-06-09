@@ -82,8 +82,10 @@ public class Editor : Game
             Exit();
 
         // TODO: Add your update logic here
+        var kstate = Keyboard.GetState();
 
-        input.TopDown8();
+        input.TopDown8(kstate);
+        currentScene.gameObjects[1].position += new Vector3(input.movementVector.X, input.movementVector.Y, 0);
         
 
         base.Update(gameTime);
