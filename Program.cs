@@ -1,3 +1,2 @@
-﻿
-using var game = new Sorcery.Editor();
+﻿using var game = new Sorcery.Editor();
 game.Run();
