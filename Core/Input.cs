@@ -44,4 +44,9 @@ namespace Sorcery.Core{
             parent.position.Y += movementVector.Y * maxSpeed;
         }
     }
+
+    //makes game objects clickable, has nothing to do with UI
+    public interface IClickable{
+        public void Click();
+    }
 }

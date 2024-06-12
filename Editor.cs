@@ -18,6 +18,8 @@ public class Editor : Game
 
     public Scene currentScene = new Scene();
     public Input input;
+    //tteting spritesheets
+    List<Sprite> sprites;
 
     GameObject selectedObject;
 
@@ -64,6 +66,10 @@ public class Editor : Game
             spriteRenderer.scale = new Vector2(2, 2);
             currentScene.gameObjects[1].AddComponent(spriteRenderer);
             currentScene.gameObjects[1].AddComponent(new Input(5));
+
+            //testing spritesheets
+            SpriteSheet testSheet = new SpriteSheet("test", "Content/Assets/Sprites/techplat1.png", GraphicsDevice, new Vector2(38, 64));
+            sprites = testSheet.SliceSheet();
             input = currentScene.gameObjects[1].GetComponent<Input>() as Input;
         base.Initialize();
     }
@@ -157,6 +163,7 @@ public class Editor : Game
         GraphicsDevice.Clear(Color.CornflowerBlue);
         _spriteBatch.Begin(SpriteSortMode.BackToFront, samplerState: SamplerState.PointClamp);
         _spriteBatch.Draw(testTexture, new Vector2(100, 100), Color.White);
+        sprites[1].Draw(_spriteBatch, new Vector2(116, 116));
         SpriteRenderer ren = currentScene.gameObjects[1].GetComponent<SpriteRenderer>() as SpriteRenderer;
         ren.Draw(_spriteBatch);
         //currentScene.gameObjects[1].components[0].Draw(_spriteBatch);
