@@ -68,7 +68,7 @@ public class Editor : Game
             currentScene.gameObjects[1].AddComponent(new Input(5));
 
             //testing spritesheets
-            SpriteSheet testSheet = new SpriteSheet("test", "Content/Assets/Sprites/techplat1.png", GraphicsDevice, new Vector2(38, 64));
+            SpriteSheet testSheet = new SpriteSheet("test", "Content/Assets/Sprites/techplat1.png", GraphicsDevice, new Vector2(48, 64), new Vector2(16, 16));
             sprites = testSheet.SliceSheet();
             input = currentScene.gameObjects[1].GetComponent<Input>() as Input;
         base.Initialize();
