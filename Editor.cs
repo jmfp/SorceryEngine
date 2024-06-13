@@ -70,7 +70,7 @@ public class Editor : Game
             SpriteRenderer spriteRenderer = new SpriteRenderer("Content/Assets/Sprites/demon.png", GraphicsDevice);
             spriteRenderer.scale = new Vector2(2, 2);
             currentScene.gameObjects[1].AddComponent(spriteRenderer);
-            currentScene.gameObjects[1].AddComponent(new Input(5));
+            currentScene.gameObjects[1].AddComponent(new Input(1));
 
             //testing spritesheets
             SpriteSheet testSheet = new SpriteSheet("test", "Content/Assets/Sprites/techplat1.png", GraphicsDevice, new Vector2(48, 64), new Vector2(16, 16));
@@ -100,10 +100,7 @@ public class Editor : Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
-        // TODO: Add your update logic here
-        var kstate = Keyboard.GetState();
-
-        input.TopDown8(kstate);
+        input.TopDown8();
         currentScene.gameObjects[1].position += new Vector3(input.movementVector.X, input.movementVector.Y, 0);
         //getting mouse position
         mousePosition.X = Mouse.GetState().X;

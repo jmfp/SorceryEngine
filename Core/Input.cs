@@ -7,7 +7,10 @@ namespace Sorcery.Core{
         public Vector2 movementVector = new Vector2(0, 0);
         public float maxSpeed;
         public float minSpeed;
-        public bool isPresed;
+        public bool isPressed;
+        //directions for animator in bools for north, east, south, westt
+        public bool[] directions = new bool[4];
+
         public Input(float maxSpeed) {
             //this.movementVector = movementVector;
             this.maxSpeed = maxSpeed;
@@ -15,42 +18,48 @@ namespace Sorcery.Core{
             this.minSpeed = maxSpeed;
         }
 
-        public void TopDown8(KeyboardState state){
-            if(state.IsKeyDown(Keys.A) && !isPresed) {
-                isPresed = true;
+        public void TopDown8(){
+            isPressed = false;
+            movementVector = new Vector2(0, 0);
+            if(Keyboard.GetState().IsKeyDown(Keys.A) && !isPressed) {
+                isPressed = true;
                 movementVector.X -= maxSpeed;
+                //moving west
+                directions[3] = true;
             }
-            if(state.IsKeyDown(Keys.D) && !isPresed) {
-                isPresed = true;
-                movementVector.X = 1f;
+            if(Keyboard.GetState().IsKeyDown(Keys.D) && !isPressed) {
+                isPressed = true;
+                movementVector.X += maxSpeed;
+                //moving east
+                directions[1] = true;
             }
-            if(state.IsKeyDown(Keys.W) && !isPresed) {
-                isPresed = true;
-                movementVector.Y = -1f;
+            if(Keyboard.GetState().IsKeyDown(Keys.W) && !isPressed) {
+                isPressed = true;
+                movementVector.Y -= maxSpeed;
+                //moving north
+                directions[0] = true;
             }
-            if(state.IsKeyDown(Keys.S) && !isPresed) {
-                isPresed = true;
-                movementVector.Y = 1f;
+            if(Keyboard.GetState().IsKeyDown(Keys.S) && !isPressed) {
+                isPressed = true;
+                movementVector.Y += maxSpeed;
+                //moving south
+                directions[2] = true;
             }
-            if(state.IsKeyUp(Keys.A)) {
-                isPresed = false;
-                movementVector.X = 0f;
+            if(Keyboard.GetState().IsKeyUp(Keys.A) && isPressed) {
+                directions[3] = false;
             }
-            if(state.IsKeyUp(Keys.D)) {
-                isPresed = false;
-                movementVector.X = 0f;
+            if(Keyboard.GetState().IsKeyUp(Keys.D) && isPressed) {
+                directions[1] = false;
             }
-            if(state.IsKeyUp(Keys.W)) {
-                isPresed = false;
-                movementVector.Y = 0f;
+            if(Keyboard.GetState().IsKeyUp(Keys.W) && isPressed) {
+                directions[0] = false;
             }
-            if(state.IsKeyUp(Keys.S)) {
-                isPresed = false;
-                movementVector.Y = 0f;
+            if(Keyboard.GetState().IsKeyUp(Keys.S) && isPressed) {
+                directions[2] = false;
             }
 
-            parent.position.X += movementVector.X * maxSpeed;
-            parent.position.Y += movementVector.Y * maxSpeed;
+            parent.position.X += movementVector.X;
+            parent.position.Y += movementVector.Y;
         }
     }
 
