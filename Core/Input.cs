@@ -7,6 +7,7 @@ namespace Sorcery.Core{
         public Vector2 movementVector = new Vector2(0, 0);
         public float maxSpeed;
         public float minSpeed;
+        public bool isPresed;
         public Input(float maxSpeed) {
             //this.movementVector = movementVector;
             this.maxSpeed = maxSpeed;
@@ -15,28 +16,36 @@ namespace Sorcery.Core{
         }
 
         public void TopDown8(KeyboardState state){
-            if(state.IsKeyDown(Keys.A)) {
+            if(state.IsKeyDown(Keys.A) && !isPresed) {
+                isPresed = true;
                 movementVector.X -= maxSpeed;
             }
-            if(state.IsKeyDown(Keys.D)) {
+            if(state.IsKeyDown(Keys.D) && !isPresed) {
+                isPresed = true;
                 movementVector.X = 1f;
             }
-            if(state.IsKeyDown(Keys.W)) {
+            if(state.IsKeyDown(Keys.W) && !isPresed) {
+                isPresed = true;
                 movementVector.Y = -1f;
             }
-            if(state.IsKeyDown(Keys.S)) {
+            if(state.IsKeyDown(Keys.S) && !isPresed) {
+                isPresed = true;
                 movementVector.Y = 1f;
             }
             if(state.IsKeyUp(Keys.A)) {
+                isPresed = false;
                 movementVector.X = 0f;
             }
             if(state.IsKeyUp(Keys.D)) {
+                isPresed = false;
                 movementVector.X = 0f;
             }
             if(state.IsKeyUp(Keys.W)) {
+                isPresed = false;
                 movementVector.Y = 0f;
             }
             if(state.IsKeyUp(Keys.S)) {
+                isPresed = false;
                 movementVector.Y = 0f;
             }
 

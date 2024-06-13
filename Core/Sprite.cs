@@ -70,5 +70,17 @@ namespace Sorcery.Core{
             }
             return list;
         }
+
+        public List<Tile> SliceToTile(){
+            Texture2D sheet = LoadSpriteSheet();
+            List<Tile> list = new List<Tile>();
+            for (int x = 0; x < dimensions.X / tileDimensions.X; x++) {
+                for (int y = 0; y < dimensions.Y / tileDimensions.Y; y++) {
+                    list.Add(new Tile(new Sprite(sheet, new Vector2(16, 16), new Rectangle(x, y-1, (int)tileDimensions.X, (int)tileDimensions.Y))));
+                    //list.Add(new Sprite(sheet, new Vector2(16, 16), new Rectangle(x, y-1, (int)tileDimensions.X, (int)tileDimensions.Y)));
+                }
+            }
+            return list;
+        }
     }
 }

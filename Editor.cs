@@ -17,7 +17,12 @@ public class Editor : Game
     bool show_native_examples = true;
 
     public Scene currentScene = new Scene();
+    //Game Manager controls quite a bit of logic under the hood
+    public GameManager gameManager = new GameManager();
+    TileMapEditor tileMapEditor;
     public Input input;
+    Vector2 mousePosition;
+    bool leftClick, rightClick;
     //tteting spritesheets
     List<Sprite> sprites;
 
@@ -71,6 +76,14 @@ public class Editor : Game
             SpriteSheet testSheet = new SpriteSheet("test", "Content/Assets/Sprites/techplat1.png", GraphicsDevice, new Vector2(48, 64), new Vector2(16, 16));
             sprites = testSheet.SliceSheet();
             input = currentScene.gameObjects[1].GetComponent<Input>() as Input;
+
+            //testing tilemaps
+            TileMap tileMap= new TileMap();
+            currentScene.gameObjects[2].AddComponent(tileMap);
+            tileMapEditor = new TileMapEditor(currentScene.gameObjects[2].GetComponent<TileMap>() as TileMap);
+            currentScene.tiles = testSheet.SliceToTile();
+            tileMapEditor.SelectTile(currentScene.tiles[0]);
+            Console.WriteLine(currentScene.tiles.Count);
         base.Initialize();
     }
 
@@ -92,6 +105,23 @@ public class Editor : Game
 
         input.TopDown8(kstate);
         currentScene.gameObjects[1].position += new Vector3(input.movementVector.X, input.movementVector.Y, 0);
+        //getting mouse position
+        mousePosition.X = Mouse.GetState().X;
+        mousePosition.Y = Mouse.GetState().Y;
+        if (Mouse.GetState().LeftButton == ButtonState.Pressed && !leftClick){
+            leftClick = true;
+        }
+        if (Mouse.GetState().RightButton == ButtonState.Pressed && !rightClick){
+            rightClick = true;
+        }
+        if (Mouse.GetState().LeftButton != ButtonState.Pressed){
+            leftClick = false;
+        }
+        if (Mouse.GetState().RightButton != ButtonState.Pressed){
+            rightClick = false;
+        }
+        tileMapEditor.Update(mousePosition, leftClick, rightClick);
+
         
 
         base.Update(gameTime);
@@ -162,6 +192,9 @@ public class Editor : Game
         // Draw the scene
         GraphicsDevice.Clear(Color.CornflowerBlue);
         _spriteBatch.Begin(SpriteSortMode.BackToFront, samplerState: SamplerState.PointClamp);
+        //draw tilemap
+        TileMap tMap = currentScene.gameObjects[2].GetComponent<TileMap>() as TileMap;
+        tMap.Draw(_spriteBatch);
         _spriteBatch.Draw(testTexture, new Vector2(100, 100), Color.White);
         sprites[1].Draw(_spriteBatch, new Vector2(116, 116));
         SpriteRenderer ren = currentScene.gameObjects[1].GetComponent<SpriteRenderer>() as SpriteRenderer;
