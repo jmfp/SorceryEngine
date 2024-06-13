@@ -8,10 +8,22 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Sorcery.Core
 {
+    public struct MapTile{
+        public Tile tile;
+        public Vector2 position;
+        public int layer;
+
+        public MapTile(Tile tile, Vector2 position, int layer){
+            this.tile = tile;
+            this.position = position;
+            this.layer = layer;
+        }
+    }
     public class TileMap : Component
     {
         //represents the tilemap with
-        public Dictionary<Tile, Dictionary<Vector2, int>> tileMap = new Dictionary<Tile, Dictionary<Vector2, int>>();
+        //public Dictionary<Tile, Dictionary<Vector2, int>> tileMap = new Dictionary<Tile, Dictionary<Vector2, int>>();
+        public List<MapTile> tileMap = new List<MapTile>();
 
         public GameManager gameManager;
 
@@ -21,9 +33,9 @@ namespace Sorcery.Core
 
         public void Draw(SpriteBatch spriteBatch){
             if(tileMap.Count > 0){
-                foreach(var tile in tileMap.Keys){
+                foreach(var tile in tileMap){
                     //Console.WriteLine(tileMap[0].Keys[0]);
-                    tile.image.Draw(spriteBatch, new Vector2(200, 200));
+                    tile.tile.image.Draw(spriteBatch, tile.position);
                     //spriteBatch.Draw(tile.image.sprite, new Vector2(200, 200), Color.White);
                 }
             }
@@ -52,16 +64,17 @@ namespace Sorcery.Core
 
         Tile selectedTile;
 
-        Vector2 mousePosition;
+        Vector2 mousePosition, tilePosition = new Vector2(0, 0);
 
         public TileMapEditor(TileMap tileMap){
             this.tileMap = tileMap;
         }
 
         public void AddTile(Tile tile, Vector2 position){
-            Dictionary<Vector2, int> positionLayer = new Dictionary<Vector2, int>();
-            positionLayer.Add(position, currentLayer);
-            tileMap.tileMap.Add(tile, positionLayer);
+            //Dictionary<Vector2, int> positionLayer = new Dictionary<Vector2, int>();
+            MapTile mapTile = new MapTile(tile, position, currentLayer);
+            //positionLayer.Add(position, currentLayer);
+            tileMap.tileMap.Add(mapTile);
         }
 
         public void SelectTile(Tile tile){
@@ -70,8 +83,10 @@ namespace Sorcery.Core
 
         public void Update(Vector2 mousePosition, bool leftClick, bool rightClick) {
             this.mousePosition = mousePosition;
-            if (leftClick && !tileMap.tileMap.ContainsKey(selectedTile)){
-                AddTile(selectedTile, new Vector2(mousePosition.X / 16, mousePosition.Y / 16));
+            tilePosition.X = (int)(mousePosition.X / 16);
+            tilePosition.Y = (int)(mousePosition.Y / 16);
+            if (leftClick){
+                AddTile(selectedTile, tilePosition);
             }
         }
     }
