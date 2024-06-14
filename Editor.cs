@@ -14,13 +14,14 @@ public class Editor : Game
 {
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
-    bool show_native_examples = true;
+    bool show_native_examples = true, isResizing;
 
     public Scene currentScene = new Scene();
     //Game Manager controls quite a bit of logic under the hood
     public GameManager gameManager = new GameManager();
     TileMapEditor tileMapEditor;
     public Input input;
+    public static int screenWidth, screenHeight;
     Vector2 mousePosition;
     bool leftClick, rightClick;
     //tteting spritesheets
@@ -28,12 +29,16 @@ public class Editor : Game
 
     GameObject selectedObject;
 
+    //testing camera
+    Camera2D camera;
+
     //testing textures
     Texture2D testTexture;
 
     ImGuiRenderer GuiRenderer;
     // Create a new render target
     RenderTarget2D renderTarget;
+    Rectangle renderDestination;
 
     public Editor()
     {
@@ -41,11 +46,21 @@ public class Editor : Game
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
         Window.AllowUserResizing = true;
-        //Window.ClientSizeChanged += OnResize;
+        Window.ClientSizeChanged += OnResize;
+    }
+
+    void OnResize(object sender, EventArgs e){
+        if (!isResizing && Window.ClientBounds.Width > 0 && Window.ClientBounds.Height > 0){
+            isResizing = true;
+            CalculateRenderDestination();
+            isResizing = false;
+        }
     }
 
     protected override void Initialize()
     {
+            screenWidth = _graphics.PreferredBackBufferWidth;
+            screenHeight = _graphics.PreferredBackBufferHeight;
         // TODO: Add your initialization logic here
             this.Window.Title = "Sorcery";
 
@@ -77,6 +92,9 @@ public class Editor : Game
             sprites = testSheet.SliceSheet();
             input = currentScene.gameObjects[1].GetComponent<Input>() as Input;
 
+            //testing camera
+            camera = new Camera2D();
+
             //testing tilemaps
             TileMap tileMap= new TileMap();
             currentScene.gameObjects[2].AddComponent(tileMap);
@@ -101,10 +119,11 @@ public class Editor : Game
             Exit();
 
         input.TopDown8();
-        currentScene.gameObjects[1].position += new Vector3(input.movementVector.X, input.movementVector.Y, 0);
+        //currentScene.gameObjects[1].position += new Vector3(input.movementVector.X, input.movementVector.Y, 0);
         //getting mouse position
         mousePosition.X = Mouse.GetState().X;
         mousePosition.Y = Mouse.GetState().Y;
+        Console.WriteLine(new Vector2(Mouse.GetState().X, Mouse.GetState().Y));
         if (Mouse.GetState().LeftButton == ButtonState.Pressed && !leftClick){
             leftClick = true;
         }
@@ -118,6 +137,7 @@ public class Editor : Game
             rightClick = false;
         }
         tileMapEditor.Update(mousePosition, leftClick, rightClick);
+        camera.Follow(currentScene.gameObjects[1]);
 
         
 
@@ -140,7 +160,7 @@ public class Editor : Game
         //ImGui.DockSpace(1, new System.Numerics.Vector2(1920.0f, 1080.0f));
         //ImGui.Image(GraphicsDevice, new System.Numerics.Vector2(1920.0f, 1080.0f));
         ImGui.Begin("Game");
-        ImGui.Image(GuiRenderer.BindTexture(renderTarget), new System.Numerics.Vector2(1920, 1080));
+        ImGui.Image(GuiRenderer.BindTexture(renderTarget), new System.Numerics.Vector2(renderDestination.Width, renderDestination.Height));
         ImGui.Begin("Scene");
         for (int i = 0; i<currentScene.gameObjects.Count; i++){
             //ImGui.Text(currentScene.gameObjects[i].name);
@@ -181,6 +201,21 @@ public class Editor : Game
         //GraphicsDevice.GetBackBufferData();
     }
 
+    public void CalculateRenderDestination(){
+        Point size = GraphicsDevice.Viewport.Bounds.Size;
+
+        //scale on x axis
+        float scaleX = size.X / renderTarget.Width;
+        //y axis
+        float scaleY = size.Y / renderTarget.Height;
+
+        float scale = Math.Min(scaleX, scaleY);
+        renderDestination.Width = (int)(renderTarget.Width * scale);
+        renderDestination.Height = (int)(renderTarget.Height * scale);
+        renderDestination.X = (size.X - renderDestination.Width) / 2;
+        renderDestination.X = (size.Y - renderDestination.Height) / 2;
+    }
+
     protected void DrawSceneToTexture(RenderTarget2D renderTarget)
     {
         // Set the render target
@@ -188,7 +223,7 @@ public class Editor : Game
         GraphicsDevice.DepthStencilState = new DepthStencilState() { DepthBufferEnable = true };
         // Draw the scene
         GraphicsDevice.Clear(Color.CornflowerBlue);
-        _spriteBatch.Begin(SpriteSortMode.BackToFront, samplerState: SamplerState.PointClamp);
+        _spriteBatch.Begin(SpriteSortMode.BackToFront, transformMatrix: camera.Transform,  samplerState: SamplerState.PointClamp);
         //draw tilemap
         TileMap tMap = currentScene.gameObjects[2].GetComponent<TileMap>() as TileMap;
         tMap.Draw(_spriteBatch);
