@@ -9,7 +9,20 @@ namespace Sorcery.Core
 {
     public class Animation
     {
-        Texture2D[] animationFrames;
+        public Texture2D[] animationFrames;
         int counter, activeFrame;
+
+        public void Animate(int speed)
+        {
+            counter++;
+            if(counter >= speed)
+            {
+                activeFrame++;
+                if(activeFrame > animationFrames.Length - 1)
+                {
+                    activeFrame = 0;
+                }
+            }
+        }
     }
 }
