@@ -10,10 +10,11 @@ namespace Sorcery.Core
     public class Collision2D
     {
         public bool CollisionCheck(Rectangle rect1, Rectangle rect2){
-            if(rect1.Intersects(rect2)){
-                return true;
-            }
-            return false;
+            return rect1.Intersects(rect2);
+            //if(rect1.Intersects(rect2)){
+            //    return true;
+            //}
+            //return false;
         }
     }
 }
