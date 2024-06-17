@@ -160,7 +160,7 @@ public class Editor : Game
         //ImGui.DockSpace(1, new System.Numerics.Vector2(1920.0f, 1080.0f));
         //ImGui.Image(GraphicsDevice, new System.Numerics.Vector2(1920.0f, 1080.0f));
         ImGui.Begin("Game");
-        ImGui.Image(GuiRenderer.BindTexture(renderTarget), new System.Numerics.Vector2(renderDestination.Width, renderDestination.Height));
+        ImGui.Image(GuiRenderer.BindTexture(renderTarget), new System.Numerics.Vector2(renderTarget.Width, renderTarget.Height));
         ImGui.Begin("Scene");
         for (int i = 0; i<currentScene.gameObjects.Count; i++){
             //ImGui.Text(currentScene.gameObjects[i].name);
@@ -169,7 +169,9 @@ public class Editor : Game
             }
         }
         
-        ImGui.Button("Add Empty Object");
+        if(ImGui.Button("Add Empty Object")){
+            currentScene.gameObjects.Add(new GameObject("Empty Game Object", new System.Numerics.Vector3(0, 0, 0)));
+        };
         //ImGui.SliderFloat("Float Slider", ref sliderVal, 0, 100)
         ImGui.Begin("Project");
         ImGui.Begin("Inspector");
