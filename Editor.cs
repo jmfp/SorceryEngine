@@ -121,9 +121,8 @@ public class Editor : Game
         input.TopDown8();
         //currentScene.gameObjects[1].position += new Vector3(input.movementVector.X, input.movementVector.Y, 0);
         //getting mouse position
-        mousePosition.X = Mouse.GetState().X;
-        mousePosition.Y = Mouse.GetState().Y;
-        Console.WriteLine(new Vector2(Mouse.GetState().X, Mouse.GetState().Y));
+        mousePosition = Mouse.GetState().Position.ToVector2();
+        Console.WriteLine(mousePosition);
         if (Mouse.GetState().LeftButton == ButtonState.Pressed && !leftClick){
             leftClick = true;
         }
@@ -160,7 +159,7 @@ public class Editor : Game
         //ImGui.DockSpace(1, new System.Numerics.Vector2(1920.0f, 1080.0f));
         //ImGui.Image(GraphicsDevice, new System.Numerics.Vector2(1920.0f, 1080.0f));
         ImGui.Begin("Game");
-        ImGui.Image(GuiRenderer.BindTexture(renderTarget), new System.Numerics.Vector2(renderTarget.Width, renderTarget.Height));
+        ImGui.Image(GuiRenderer.BindTexture(renderTarget), new System.Numerics.Vector2(renderDestination.Width, renderDestination.Height));
         ImGui.Begin("Scene");
         for (int i = 0; i<currentScene.gameObjects.Count; i++){
             //ImGui.Text(currentScene.gameObjects[i].name);

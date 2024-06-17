@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 namespace Sorcery.Core{
     public class GameObject{
-    public string name;
+    public string name = "New Game Object";
     public GameObject[] children;
     public GameObject parent;
     public Vector3 position;

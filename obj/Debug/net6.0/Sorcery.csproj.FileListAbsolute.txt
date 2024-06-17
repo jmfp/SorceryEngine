@@ -53,5 +53,4 @@
 /Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Debug/net6.0/runtimes/osx-x64/native/libglfw.3.dylib
 /Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Debug/net6.0/runtimes/win-x64/native/glfw3.dll
 /Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Debug/net6.0/runtimes/win-x86/native/glfw3.dll
-/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/obj/Debug/net6.0/Sorcery.sourcelink.json
-/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/obj/Debug/net6.0/Sorcery.csproj.Up2Date
+/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/obj/Debug/net6.0/Sorcery.csproj.CopyComplete
