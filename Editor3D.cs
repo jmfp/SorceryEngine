@@ -7,6 +7,7 @@ using System;
 using ImGuiNET;
 using Sorcery.Core;
 using Sorcery.Scenes;
+using OpenTK.Graphics.OpenGL4;
 
 namespace Sorcery;
 
@@ -151,17 +152,21 @@ public class Editor3D : Game
     protected void DrawSceneToTexture(RenderTarget2D renderTarget)
     {
         // Set the render target
-        GraphicsDevice.SetRenderTarget(renderTarget);
-        GraphicsDevice.DepthStencilState = new DepthStencilState() { DepthBufferEnable = true };
+        //GraphicsDevice.SetRenderTarget(renderTarget);
+        //GraphicsDevice.DepthStencilState = new DepthStencilState() { DepthBufferEnable = true };
         // Draw the scene
-        GraphicsDevice.Clear(Color.CornflowerBlue);
-        _spriteBatch.Begin(SpriteSortMode.BackToFront, samplerState: SamplerState.PointClamp);
-        _spriteBatch.Draw(testTexture, new Vector2(100, 100), Color.White);
+        //GraphicsDevice.Clear(Color.CornflowerBlue);
+        //draw here
+
+
+
+        //_spriteBatch.Begin(SpriteSortMode.BackToFront, samplerState: SamplerState.PointClamp);
+        //_spriteBatch.Draw(testTexture, new Vector2(100, 100), Color.White);
         //SpriteRenderer ren = currentScene.gameObjects[1].GetComponent<SpriteRenderer>() as SpriteRenderer;
         //ren.Draw(_spriteBatch);
         //currentScene.gameObjects[1].components[0].Draw(_spriteBatch);
-        _spriteBatch.End();
+        //_spriteBatch.End();
         // Drop the render target
-        GraphicsDevice.SetRenderTarget(null);
+        //GraphicsDevice.SetRenderTarget(null);
     }
 }
