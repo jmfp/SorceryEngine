@@ -24,12 +24,13 @@ namespace Sorcery.Core
         //represents the tilemap with
         //public Dictionary<Tile, Dictionary<Vector2, int>> tileMap = new Dictionary<Tile, Dictionary<Vector2, int>>();
         public List<MapTile> tileMap = new List<MapTile>();
+        public float testFloat;
 
         public GameManager gameManager;
 
-        //public TileMap (Dictionary<Tile, Dictionary<Vector2, int>> tileMap){
-        //    this.tileMap = tileMap;
-        //}
+        public TileMap (string name): base(){
+            this.name = name;
+        }
 
         public void Draw(SpriteBatch spriteBatch){
             if(tileMap.Count > 0){
@@ -83,8 +84,8 @@ namespace Sorcery.Core
 
         public void Update(Vector2 mousePosition, bool leftClick, bool rightClick) {
             this.mousePosition = mousePosition;
-            tilePosition.X = (int)(mousePosition.X / 16);
-            tilePosition.Y = (int)(mousePosition.Y / 16);
+            tilePosition.X = (int)(mousePosition.X);
+            tilePosition.Y = (int)(mousePosition.Y);
             if (leftClick){
                 AddTile(selectedTile, tilePosition);
             }

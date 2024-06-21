@@ -11,11 +11,12 @@ namespace Sorcery.Core{
         //directions for animator in bools for north, east, south, westt
         public bool[] directions = new bool[4];
 
-        public Input(float maxSpeed) {
+        public Input(float maxSpeed, string name="Input") {
             //this.movementVector = movementVector;
             this.maxSpeed = maxSpeed;
             //setting minSpeed to maxSpeed on instantiation so that only if minSpeed < maxSpeed will the player speed up during input
             this.minSpeed = maxSpeed;
+            this.name = name;
         }
 
         public void TopDown8(){

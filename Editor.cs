@@ -7,6 +7,7 @@ using System;
 using ImGuiNET;
 using Sorcery.Core;
 using Sorcery.Scenes;
+using System.Reflection;
 
 namespace Sorcery;
 
@@ -15,6 +16,9 @@ public class Editor : Game
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     bool show_native_examples = true, isResizing;
+
+    //listing fields for selected component
+    public FieldInfo[] fields;
 
     public Scene currentScene = new Scene();
     //Game Manager controls quite a bit of logic under the hood
@@ -96,7 +100,7 @@ public class Editor : Game
             camera = new Camera2D();
 
             //testing tilemaps
-            TileMap tileMap= new TileMap();
+            TileMap tileMap= new TileMap("Tilemap");
             currentScene.gameObjects[2].AddComponent(tileMap);
             tileMapEditor = new TileMapEditor(currentScene.gameObjects[2].GetComponent<TileMap>() as TileMap);
             currentScene.tiles = testSheet.SliceToTile();
@@ -122,7 +126,8 @@ public class Editor : Game
         //currentScene.gameObjects[1].position += new Vector3(input.movementVector.X, input.movementVector.Y, 0);
         //getting mouse position
         mousePosition = Mouse.GetState().Position.ToVector2();
-        Console.WriteLine(mousePosition);
+        Vector2 relativeMousePos = Vector2.Transform(mousePosition, Matrix.Invert(camera.Transform));
+        //Console.WriteLine(relativeMousePos);
         if (Mouse.GetState().LeftButton == ButtonState.Pressed && !leftClick){
             leftClick = true;
         }
@@ -136,7 +141,7 @@ public class Editor : Game
             rightClick = false;
         }
         //testing out tilemap editor
-        //tileMapEditor.Update(mousePosition, leftClick, rightClick);
+        tileMapEditor.Update(relativeMousePos, leftClick, rightClick);
         camera.Follow(currentScene.gameObjects[1]);
 
         
@@ -177,15 +182,39 @@ public class Editor : Game
         ImGui.Begin("Inspector");
         if (selectedObject != null){
             ImGui.Text(selectedObject.name);
-            ImGui.SliderFloat("Position X", ref selectedObject.position.X, 0, 10000);
-            ImGui.SliderFloat("Position Y", ref selectedObject.position.Y, 0, 10000);
-            ImGui.SliderFloat("Position Z", ref selectedObject.position.Z, 0, 10000);
+            ImGui.InputFloat("Position X", ref selectedObject.position.X);
+            ImGui.InputFloat("Position Y", ref selectedObject.position.Y);
+            ImGui.InputFloat("Position Z", ref selectedObject.position.Z);
             if(selectedObject.components.Count > 0){
                 //list all atttached components
                 for (int i = 0; i < selectedObject.components.Count; i++){
-                    ImGui.Text($"{selectedObject.components[i].name}");
+                    if(ImGui.Button($"{selectedObject.components[i].name}")){
+                        var fieldValues = selectedObject.components[i].GetType().
+                            GetFields();
+                        fields = fieldValues;
+                        //Console.WriteLine(fields[1].FieldType);
+                    }
                 }
             }
+
+            if (fields != null && fields.Length > 0)
+            {
+                for (int x = 0; x < fields.Length; x++)
+                {
+                    if (fields[x].FieldType == typeof(float))
+                    {
+                        ImGui.InputFloat(fields[x].Name, ref selectedObject.position.X);
+                    }
+                    if (fields[x].FieldType == typeof(string))
+                    {
+                        ImGui.Text(fields[x].Name);
+                    }
+                }
+            }
+            //if(ImGui.Button("Add Component"))
+            //{
+            //    selectedObject.components.Add()
+            //}
         }
         //ImGui End
         GuiRenderer.EndLayout();
@@ -225,7 +254,7 @@ public class Editor : Game
         GraphicsDevice.DepthStencilState = new DepthStencilState() { DepthBufferEnable = true };
         // Draw the scene
         GraphicsDevice.Clear(Color.CornflowerBlue);
-        _spriteBatch.Begin(SpriteSortMode.BackToFront, transformMatrix: camera.Transform,  samplerState: SamplerState.PointClamp);
+        _spriteBatch.Begin(SpriteSortMode.BackToFront, transformMatrix: camera.Transform, samplerState: SamplerState.PointClamp);
         //draw tilemap
         TileMap tMap = currentScene.gameObjects[2].GetComponent<TileMap>() as TileMap;
         tMap.Draw(_spriteBatch);
