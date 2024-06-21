@@ -135,7 +135,8 @@ public class Editor : Game
         if (Mouse.GetState().RightButton != ButtonState.Pressed){
             rightClick = false;
         }
-        tileMapEditor.Update(mousePosition, leftClick, rightClick);
+        //testing out tilemap editor
+        //tileMapEditor.Update(mousePosition, leftClick, rightClick);
         camera.Follow(currentScene.gameObjects[1]);
 
         
