@@ -39,6 +39,12 @@ public class Editor : Game
     //testing textures
     Texture2D testTexture;
 
+    //testing collision
+    Collision2D collision = new Collision2D();
+
+    //testing sprite stacks
+    SpriteStack stack;
+
     ImGuiRenderer GuiRenderer;
     ImGuiIOPtr io;
 
@@ -86,6 +92,7 @@ public class Editor : Game
             //scene management
             currentScene.gameObjects.Add(new GameObject("New Object", new System.Numerics.Vector3(0, 0, 0)));
             currentScene.gameObjects.Add(new GameObject("Demon", new System.Numerics.Vector3(0, 0, 0)));
+            currentScene.gameObjects.Add(new GameObject("Demon2", new System.Numerics.Vector3(100, 0, 0)));
             currentScene.gameObjects.Add(new GameObject("Tilemap", new System.Numerics.Vector3(0, 0, 0)));
             currentScene.gameObjects.Add(new GameObject("Game Manager", new System.Numerics.Vector3(0, 0, 0)));
             currentScene.gameObjects.Add(new GameObject("UI Canvas", new System.Numerics.Vector3(0, 0, 0)));
@@ -93,9 +100,15 @@ public class Editor : Game
             spriteRenderer.scale = new Vector2(2, 2);
             currentScene.gameObjects[1].AddComponent(spriteRenderer);
             currentScene.gameObjects[1].AddComponent(new Input(1));
+            currentScene.gameObjects[1].AddComponent(new SquareCollider(spriteRenderer.sprite, new Vector2(0, 0)));
+            SpriteRenderer spriteRenderer2 = new SpriteRenderer("Content/Assets/Sprites/demon.png", GraphicsDevice);
+            spriteRenderer2.scale = new Vector2(2, 2);
+            currentScene.gameObjects[2].AddComponent(spriteRenderer2);
+            //currentScene.gameObjects[1].AddComponent(new Input(1));
+            currentScene.gameObjects[2].AddComponent(new SquareCollider(spriteRenderer2.sprite, new Vector2(0, 0)));
 
-            //testing spritesheets
-            SpriteSheet testSheet = new SpriteSheet("test", "Content/Assets/Sprites/techplat1.png", GraphicsDevice, new Vector2(48, 64), new Vector2(16, 16));
+        //testing spritesheets
+        SpriteSheet testSheet = new SpriteSheet("test", "Content/Assets/Sprites/techplat1.png", GraphicsDevice, new Vector2(48, 64), new Vector2(16, 16));
             sprites = testSheet.SliceSheet();
             input = currentScene.gameObjects[1].GetComponent<Input>() as Input;
 
@@ -109,6 +122,8 @@ public class Editor : Game
             currentScene.tiles = testSheet.SliceToTile();
             tileMapEditor.SelectTile(currentScene.tiles[0]);
             Console.WriteLine(currentScene.tiles.Count);
+        //testing sprite stacks
+        stack = new SpriteStack(new SpriteSheet("test stack", "Content/Assets/Sprites/GreenCar.png", GraphicsDevice, new Vector2(112, 16), new Vector2(16, 16)));
         base.Initialize();
     }
 
@@ -129,7 +144,7 @@ public class Editor : Game
         //currentScene.gameObjects[1].position += new Vector3(input.movementVector.X, input.movementVector.Y, 0);
         //getting mouse position
         mousePosition = Mouse.GetState().Position.ToVector2();
-        Console.WriteLine(mousePosition.X - renderTarget.Width);
+        //Console.WriteLine(mousePosition.X - renderTarget.Width);
         Vector2 relativeMousePos = Vector2.Transform(mousePosition, Matrix.Invert(camera.Transform));
         //Console.WriteLine(mousePosition);
         if (Mouse.GetState().LeftButton == ButtonState.Pressed && !leftClick){
@@ -147,6 +162,13 @@ public class Editor : Game
         //testing out tilemap editor
         tileMapEditor.Update(relativeMousePos, leftClick, rightClick);
         camera.Follow(currentScene.gameObjects[1]);
+
+        //testing collision
+        SquareCollider one = currentScene.gameObjects[1].GetComponent<SquareCollider>() as SquareCollider, two = currentScene.gameObjects[1].GetComponent<SquareCollider>() as SquareCollider;
+        if (collision.CollisionCheck(one.rect, two.rect))
+        {
+            Console.WriteLine("Collision");
+        }
 
         
 
@@ -293,6 +315,10 @@ public class Editor : Game
         sprites[1].Draw(_spriteBatch, new Vector2(116, 116));
         SpriteRenderer ren = currentScene.gameObjects[1].GetComponent<SpriteRenderer>() as SpriteRenderer;
         ren.Draw(_spriteBatch);
+        SpriteRenderer ren2 = currentScene.gameObjects[2].GetComponent<SpriteRenderer>() as SpriteRenderer;
+        ren2.Draw(_spriteBatch);
+        //testing sprite stacks
+        stack.Draw(_spriteBatch, new Vector2(25, 0));
         //currentScene.gameObjects[1].components[0].Draw(_spriteBatch);
         _spriteBatch.End();
         // Drop the render target

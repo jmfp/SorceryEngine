@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "lSe4PhMoqwA=",
+  "dgSpecHash": "C+MxypnNfQ0zt39mOqaeovy0HxouS/y2dEvOX3qt2fPO6M83O7auvvzKUMrqrUOZULv4K66peGSnYSpl7E4DKg==",
   "success": true,
   "projectFilePath": "/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/Sorcery.csproj",
   "expectedPackageFiles": [
@@ -24,10 +24,7 @@
     "/Users/jesseprice/.nuget/packages/system.buffers/4.4.0/system.buffers.4.4.0.nupkg.sha512",
     "/Users/jesseprice/.nuget/packages/system.drawing.common/5.0.2/system.drawing.common.5.0.2.nupkg.sha512",
     "/Users/jesseprice/.nuget/packages/system.numerics.vectors/4.4.0/system.numerics.vectors.4.4.0.nupkg.sha512",
-    "/Users/jesseprice/.nuget/packages/system.runtime.compilerservices.unsafe/5.0.0/system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
-    "/Users/jesseprice/.nuget/packages/microsoft.netcore.app.ref/6.0.31/microsoft.netcore.app.ref.6.0.31.nupkg.sha512",
-    "/Users/jesseprice/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.31/microsoft.aspnetcore.app.ref.6.0.31.nupkg.sha512",
-    "/Users/jesseprice/.nuget/packages/microsoft.netcore.app.host.osx-x64/6.0.31/microsoft.netcore.app.host.osx-x64.6.0.31.nupkg.sha512"
+    "/Users/jesseprice/.nuget/packages/system.runtime.compilerservices.unsafe/5.0.0/system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }

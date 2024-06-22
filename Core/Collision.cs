@@ -20,7 +20,7 @@ namespace Sorcery.Core
 
     public class SquareCollider : Component
     {
-        Rectangle rect;
+        public Rectangle rect;
         Vector2 offset = new Vector2(0, 0);
 
         public SquareCollider(Texture2D texture, Vector2 offset, string name = "SquareCollider")

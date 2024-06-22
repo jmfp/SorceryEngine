@@ -83,4 +83,23 @@ namespace Sorcery.Core{
             return list;
         }
     }
+
+    public class SpriteStack
+    {
+        public List<Sprite> spritesInStack;
+
+        public SpriteStack(SpriteSheet spriteSheet)
+        {
+            this.spritesInStack = spriteSheet.SliceSheet();
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Vector2 position, int spread=1)
+        {
+            spriteBatch.Draw(spritesInStack[0].sprite, new Vector2(position.X, position.Y), Color.White);
+            //for (int i = 0; i < spritesInStack.Count; i++)
+            //{
+            //    spriteBatch.Draw(spritesInStack[i].sprite, new Vector2(position.X, position.Y + (i * spread)), Color.White);
+            //}
+        }
+    }
 }
