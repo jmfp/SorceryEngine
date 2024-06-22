@@ -17,4 +17,16 @@ namespace Sorcery.Core
             //return false;
         }
     }
+
+    public class SquareCollider : Component
+    {
+        Rectangle rect;
+        Vector2 offset = new Vector2(0, 0);
+
+        public SquareCollider(Texture2D texture, Vector2 offset, string name = "SquareCollider")
+        {
+            this.rect = new Rectangle(0, 0, texture.Width - (int)Math.Round(offset.X), texture.Height - (int)Math.Round(offset.Y));
+            this.name = name;
+        }
+    }
 }

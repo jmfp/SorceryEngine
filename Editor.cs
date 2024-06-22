@@ -40,6 +40,8 @@ public class Editor : Game
     Texture2D testTexture;
 
     ImGuiRenderer GuiRenderer;
+    ImGuiIOPtr io;
+
     // Create a new render target
     RenderTarget2D renderTarget;
     Rectangle renderDestination;
@@ -72,6 +74,7 @@ public class Editor : Game
             GuiRenderer.RebuildFontAtlas();
             ImGui.GetIO().ConfigFlags |= ImGuiConfigFlags.DockingEnable;
             ImGui.GetIO().ConfigFlags |= ImGuiConfigFlags.ViewportsEnable;
+            io = ImGui.GetIO();
             renderTarget = new RenderTarget2D(
                 GraphicsDevice,
                 GraphicsDevice.PresentationParameters.BackBufferWidth,
@@ -126,8 +129,9 @@ public class Editor : Game
         //currentScene.gameObjects[1].position += new Vector3(input.movementVector.X, input.movementVector.Y, 0);
         //getting mouse position
         mousePosition = Mouse.GetState().Position.ToVector2();
+        Console.WriteLine(mousePosition.X - renderTarget.Width);
         Vector2 relativeMousePos = Vector2.Transform(mousePosition, Matrix.Invert(camera.Transform));
-        //Console.WriteLine(relativeMousePos);
+        //Console.WriteLine(mousePosition);
         if (Mouse.GetState().LeftButton == ButtonState.Pressed && !leftClick){
             leftClick = true;
         }
@@ -164,8 +168,11 @@ public class Editor : Game
         //creating dockspace to mave tools around
         //ImGui.DockSpace(1, new System.Numerics.Vector2(1920.0f, 1080.0f));
         //ImGui.Image(GraphicsDevice, new System.Numerics.Vector2(1920.0f, 1080.0f));
+        System.Numerics.Vector2 mousePos = ImGui.GetIO().MousePos - ImGui.GetCursorScreenPos();
+        ImGui.SetNextWindowSize(io.DisplaySize);
         ImGui.Begin("Game");
-        ImGui.Image(GuiRenderer.BindTexture(renderTarget), new System.Numerics.Vector2(renderDestination.Width, renderDestination.Height));
+        var imguiTexture = GuiRenderer.BindTexture(DrawSceneToTexture(renderTarget));
+        ImGui.Image(imguiTexture, io.DisplaySize);
         ImGui.Begin("Scene");
         for (int i = 0; i<currentScene.gameObjects.Count; i++){
             //ImGui.Text(currentScene.gameObjects[i].name);
@@ -177,10 +184,15 @@ public class Editor : Game
         if(ImGui.Button("Add Empty Object")){
             currentScene.gameObjects.Add(new GameObject("Empty Game Object", new System.Numerics.Vector3(0, 0, 0)));
         };
+        var windowSize = ImGui.GetWindowSize();
         //ImGui.SliderFloat("Float Slider", ref sliderVal, 0, 100)
         ImGui.Begin("Project");
         ImGui.Begin("Inspector");
         if (selectedObject != null){
+            //selected component in heirarchy
+            Component selectedComponent = new Component();
+
+            ImGui.InputText(selectedObject.name, ref selectedObject.name, 250);
             ImGui.Text(selectedObject.name);
             ImGui.InputFloat("Position X", ref selectedObject.position.X);
             ImGui.InputFloat("Position Y", ref selectedObject.position.Y);
@@ -189,6 +201,7 @@ public class Editor : Game
                 //list all atttached components
                 for (int i = 0; i < selectedObject.components.Count; i++){
                     if(ImGui.Button($"{selectedObject.components[i].name}")){
+                        selectedComponent = selectedObject.components[i];
                         var fieldValues = selectedObject.components[i].GetType().
                             GetFields();
                         fields = fieldValues;
@@ -203,11 +216,29 @@ public class Editor : Game
                 {
                     if (fields[x].FieldType == typeof(float))
                     {
-                        ImGui.InputFloat(fields[x].Name, ref selectedObject.position.X);
+                        float tempFloat = 0f;
+                        if (ImGui.InputFloat(fields[x].Name, ref tempFloat))
+                        {
+                            fields[x].SetValue(selectedComponent, tempFloat);
+                        }
+                    }
+                    if (fields[x].FieldType == typeof(int))
+                    {
+                        int tempInt = 0;
+                        if (ImGui.InputInt(fields[x].Name, ref tempInt))
+                        {
+                            fields[x].SetValue(selectedComponent, tempInt);
+                        }
+                        
                     }
                     if (fields[x].FieldType == typeof(string))
                     {
-                        ImGui.Text(fields[x].Name);
+                        string tempString = "";
+                        if(ImGui.InputText(fields[x].Name, ref tempString, 250))
+                        {
+                            fields[x].SetValue(selectedComponent, tempString);
+                        }
+                        //ImGui.InputText(fields[x].Name, ref tempString, 250);
                     }
                 }
             }
@@ -247,7 +278,7 @@ public class Editor : Game
         renderDestination.X = (size.Y - renderDestination.Height) / 2;
     }
 
-    protected void DrawSceneToTexture(RenderTarget2D renderTarget)
+    protected RenderTarget2D DrawSceneToTexture(RenderTarget2D renderTarget)
     {
         // Set the render target
         GraphicsDevice.SetRenderTarget(renderTarget);
@@ -266,5 +297,6 @@ public class Editor : Game
         _spriteBatch.End();
         // Drop the render target
         GraphicsDevice.SetRenderTarget(null);
+        return renderTarget;
     }
 }
