@@ -44,6 +44,7 @@ public class Editor : Game
 
     //testing sprite stacks
     SpriteStack stack;
+    float stackRotation = 0;
 
     ImGuiRenderer GuiRenderer;
     ImGuiIOPtr io;
@@ -102,7 +103,7 @@ public class Editor : Game
             currentScene.gameObjects[1].AddComponent(new Input(1));
             currentScene.gameObjects[1].AddComponent(new SquareCollider(spriteRenderer.sprite, new Vector2(0, 0)));
             SpriteRenderer spriteRenderer2 = new SpriteRenderer("Content/Assets/Sprites/demon.png", GraphicsDevice);
-            spriteRenderer2.scale = new Vector2(2, 2);
+            spriteRenderer2.scale = new Vector2(4, 4);
             currentScene.gameObjects[2].AddComponent(spriteRenderer2);
             //currentScene.gameObjects[1].AddComponent(new Input(1));
             currentScene.gameObjects[2].AddComponent(new SquareCollider(spriteRenderer2.sprite, new Vector2(0, 0)));
@@ -123,7 +124,7 @@ public class Editor : Game
             tileMapEditor.SelectTile(currentScene.tiles[0]);
             Console.WriteLine(currentScene.tiles.Count);
         //testing sprite stacks
-        stack = new SpriteStack(new SpriteSheet("test stack", "Content/Assets/Sprites/GreenCar.png", GraphicsDevice, new Vector2(112, 16), new Vector2(16, 16)));
+        stack = new SpriteStack(new SpriteSheet("test stack", "Content/Assets/Sprites/GreenCar.png", GraphicsDevice, new Vector2(112, 16), new Vector2(16, 16)), stackRotation);
         base.Initialize();
     }
 
@@ -170,8 +171,8 @@ public class Editor : Game
             Console.WriteLine("Collision");
         }
 
-        
 
+        stackRotation += 15;
         base.Update(gameTime);
     }
 
@@ -267,11 +268,11 @@ public class Editor : Game
                         Vector2 tempVector = new Vector2(0, 0);
                         if (ImGui.InputFloat(fields[x].Name + " X", ref tempVector.X))
                         {
-                            fields[x].SetValue(selectedComponent, tempVector);
+                            fields[x].SetValue(selectedComponent, tempVector.X);
                         }
                         if (ImGui.InputFloat(fields[x].Name + " Y", ref tempVector.Y))
                         {
-                            fields[x].SetValue(selectedComponent, tempVector);
+                            fields[x].SetValue(selectedComponent, tempVector.Y);
                         }
                     }
                     if (fields[x].FieldType == typeof(Vector3))

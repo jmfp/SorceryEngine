@@ -65,7 +65,7 @@ namespace Sorcery.Core{
             List<Sprite> list = new List<Sprite>();
             for (int x = 0; x < dimensions.X / tileDimensions.X; x++) {
                 for (int y = 0; y < dimensions.Y / tileDimensions.Y; y++) {
-                    list.Add(new Sprite(sheet, new Vector2(16, 16), new Rectangle(x * (int)(dimensions.X / tileDimensions.X), y, (int)tileDimensions.X, (int)tileDimensions.Y)));
+                    list.Add(new Sprite(sheet, new Vector2(16, 16), new Rectangle(x * (int)tileDimensions.X, y, (int)tileDimensions.X, (int)tileDimensions.Y)));
                 }
             }
             return list;
@@ -87,18 +87,20 @@ namespace Sorcery.Core{
     public class SpriteStack
     {
         public List<Sprite> spritesInStack;
+        float rotation;
 
-        public SpriteStack(SpriteSheet spriteSheet)
+        public SpriteStack(SpriteSheet spriteSheet, float rotation)
         {
             this.spritesInStack = spriteSheet.SliceSheet();
+            this.rotation = rotation;
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position, int spread = 1)
+        public void Draw(SpriteBatch spriteBatch, Vector2 position, int spread = 1, int scale = 2)
         {
             //spriteBatch.Draw(spritesInStack[2].sprite, new Vector2(position.X, position.Y), spritesInStack[2].rect, Color.White);
             for (int i = 0; i < spritesInStack.Count; i++)
             {
-                spriteBatch.Draw(spritesInStack[i].sprite, new Vector2(position.X, position.Y - (i * spread)), spritesInStack[i].rect, Color.White);
+                spriteBatch.Draw(spritesInStack[i].sprite, new Vector2(position.X, position.Y - (i * spread)), spritesInStack[i].rect, Color.White, rotation, new Vector2(position.X, position.Y), scale, SpriteEffects.None, 0);
             }
         }
     }
