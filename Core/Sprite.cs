@@ -65,7 +65,7 @@ namespace Sorcery.Core{
             List<Sprite> list = new List<Sprite>();
             for (int x = 0; x < dimensions.X / tileDimensions.X; x++) {
                 for (int y = 0; y < dimensions.Y / tileDimensions.Y; y++) {
-                    list.Add(new Sprite(sheet, new Vector2(16, 16), new Rectangle(x, y-1, (int)tileDimensions.X, (int)tileDimensions.Y)));
+                    list.Add(new Sprite(sheet, new Vector2(16, 16), new Rectangle(x * (int)(dimensions.X / tileDimensions.X), y, (int)tileDimensions.X, (int)tileDimensions.Y)));
                 }
             }
             return list;
@@ -93,13 +93,13 @@ namespace Sorcery.Core{
             this.spritesInStack = spriteSheet.SliceSheet();
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position, int spread=1)
+        public void Draw(SpriteBatch spriteBatch, Vector2 position, int spread = 1)
         {
-            spriteBatch.Draw(spritesInStack[0].sprite, new Vector2(position.X, position.Y), Color.White);
-            //for (int i = 0; i < spritesInStack.Count; i++)
-            //{
-            //    spriteBatch.Draw(spritesInStack[i].sprite, new Vector2(position.X, position.Y + (i * spread)), Color.White);
-            //}
+            //spriteBatch.Draw(spritesInStack[2].sprite, new Vector2(position.X, position.Y), spritesInStack[2].rect, Color.White);
+            for (int i = 0; i < spritesInStack.Count; i++)
+            {
+                spriteBatch.Draw(spritesInStack[i].sprite, new Vector2(position.X, position.Y - (i * spread)), spritesInStack[i].rect, Color.White);
+            }
         }
     }
 }

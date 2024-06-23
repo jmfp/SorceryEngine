@@ -262,6 +262,34 @@ public class Editor : Game
                         }
                         //ImGui.InputText(fields[x].Name, ref tempString, 250);
                     }
+                    if (fields[x].FieldType == typeof(Vector2))
+                    {
+                        Vector2 tempVector = new Vector2(0, 0);
+                        if (ImGui.InputFloat(fields[x].Name + " X", ref tempVector.X))
+                        {
+                            fields[x].SetValue(selectedComponent, tempVector);
+                        }
+                        if (ImGui.InputFloat(fields[x].Name + " Y", ref tempVector.Y))
+                        {
+                            fields[x].SetValue(selectedComponent, tempVector);
+                        }
+                    }
+                    if (fields[x].FieldType == typeof(Vector3))
+                    {
+                        Vector3 tempVector = new Vector3(0, 0, 0);
+                        if (ImGui.InputFloat(fields[x].Name + " X", ref tempVector.X))
+                        {
+                            fields[x].SetValue(selectedComponent, tempVector);
+                        }
+                        if (ImGui.InputFloat(fields[x].Name + " Y", ref tempVector.Y))
+                        {
+                            fields[x].SetValue(selectedComponent, tempVector);
+                        }
+                        if (ImGui.InputFloat(fields[x].Name + " Y", ref tempVector.Z))
+                        {
+                            fields[x].SetValue(selectedComponent, tempVector);
+                        }
+                    }
                 }
             }
             //if(ImGui.Button("Add Component"))
