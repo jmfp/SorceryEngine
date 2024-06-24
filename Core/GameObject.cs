@@ -9,6 +9,9 @@ namespace Sorcery.Core{
     public GameObject parent;
     public Vector3 position;
     public List<Component> components = new List<Component>();
+    //rotation parameters
+    public float rotation;
+    public Vector3 direction;
     public Rectangle Rectangle
     {
         get { return new Rectangle((int)position.X, (int)position.Y, 16, 16); }

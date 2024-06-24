@@ -84,15 +84,18 @@ namespace Sorcery.Core{
         }
     }
 
-    public class SpriteStack
+    public class SpriteStack : GameObject
     {
         public List<Sprite> spritesInStack;
-        float rotation;
+        float spread;
+        int scale;
 
-        public SpriteStack(SpriteSheet spriteSheet, float rotation)
+        public SpriteStack(SpriteSheet spriteSheet, float rotation, float spread = 2, int scale = 1) : base("Sprite Stack", new Vector3(0,0,0))
         {
             this.spritesInStack = spriteSheet.SliceSheet();
             this.rotation = rotation;
+            this.spread = spread;
+            this.scale = scale;
         }
 
         public void Rotate(float rotation)
@@ -100,20 +103,15 @@ namespace Sorcery.Core{
             this.rotation += rotation;
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position, float spread = 2, int scale = 2)
+        public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
+            this.position.X = position.X;
+            this.position.Y = position.Y;
             //spriteBatch.Draw(spritesInStack[2].sprite, new Vector2(position.X, position.Y), spritesInStack[2].rect, Color.White);
             for (int i = 0; i < spritesInStack.Count; i++)
             {
-                if(i == 0)
-                {
-                    spriteBatch.Draw(spritesInStack[i].sprite, new Vector2(position.X, position.Y - (i * spread)), spritesInStack[i].rect, Color.White, rotation, new Vector2(spritesInStack[i].rect.X / (2), spritesInStack[i].rect.Y / (2)), scale, SpriteEffects.None, 0);
-                }
-                else
-                {
-                    spriteBatch.Draw(spritesInStack[i].sprite, new Vector2(position.X, position.Y - (i * spread)), spritesInStack[i].rect, Color.White, rotation, new Vector2(spritesInStack[i].rect.X / (2 * i), spritesInStack[i].rect.Y / (2 * i)), scale, SpriteEffects.None, 0);
-                }
-                
+                spriteBatch.Draw(spritesInStack[i].sprite, new Vector2(position.X, position.Y - (i * spread)), spritesInStack[i].rect, Color.White, rotation, new Vector2(spritesInStack[i].rect.Width / 2, spritesInStack[i].rect.Height / 2), scale, SpriteEffects.None, 0);
+
             }
         }
     }

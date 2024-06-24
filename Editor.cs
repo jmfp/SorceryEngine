@@ -124,7 +124,7 @@ public class Editor : Game
             tileMapEditor.SelectTile(currentScene.tiles[0]);
             Console.WriteLine(currentScene.tiles.Count);
         //testing sprite stacks
-        stack = new SpriteStack(new SpriteSheet("test stack", "Content/Assets/Sprites/RedMotorcycle.png", GraphicsDevice, new Vector2(10, 1), new Vector2(16, 16)), stackRotation);
+        stack = new SpriteStack(new SpriteSheet("test stack", "Content/Assets/Sprites/RedMotorcycle.png", GraphicsDevice, new Vector2(10, 1), new Vector2(16, 16)), stackRotation, 2, 4);
         base.Initialize();
     }
 
@@ -171,7 +171,7 @@ public class Editor : Game
             Console.WriteLine("Collision");
         }
         float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-        stackRotation = MathHelper.ToRadians(24f) * deltaTime;
+        stackRotation = MathHelper.ToRadians(-24f) * deltaTime;
         stack.Rotate(stackRotation);
 
         base.Update(gameTime);
