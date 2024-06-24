@@ -106,6 +106,26 @@ namespace Sorcery.Core{
             parent.position.X += movementVector.X;
             parent.position.Y += movementVector.Y;
         }
+
+        public void TopDownDrive(float rotationVelocity=3, float linearVelocity=4)
+        {
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
+            {
+                parent.rotation -= MathHelper.ToRadians(rotationVelocity);
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.D))
+            {
+                parent.rotation += MathHelper.ToRadians(rotationVelocity);
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.W))
+            {
+                parent.position -= parent.direction * linearVelocity;
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.S))
+            {
+                parent.position += parent.direction * linearVelocity;
+            }
+        }
     }
 
     

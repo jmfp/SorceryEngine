@@ -87,15 +87,19 @@ namespace Sorcery.Core{
     public class SpriteStack : GameObject
     {
         public List<Sprite> spritesInStack;
-        float spread;
+        //the initial rotation for a sprite stack is for direction.
+        //i.e a sprite stack consisting of all sprites facing west would have
+        //an initial rotation of 180
+        float spread, initialRotation;
         int scale;
 
-        public SpriteStack(SpriteSheet spriteSheet, float rotation, float spread = 2, int scale = 1) : base("Sprite Stack", new Vector3(0,0,0))
+        public SpriteStack(SpriteSheet spriteSheet, float rotation, float initialRotation, float spread = 2, int scale = 1) : base("Sprite Stack", new Vector3(0,0,0))
         {
             this.spritesInStack = spriteSheet.SliceSheet();
             this.rotation = rotation;
             this.spread = spread;
             this.scale = scale;
+            this.initialRotation = initialRotation;
         }
 
         public void Rotate(float rotation)
@@ -103,15 +107,21 @@ namespace Sorcery.Core{
             this.rotation += rotation;
         }
 
+        public Vector3 GetDirection()
+        {
+            return direction;
+        }
+
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
             this.position.X = position.X;
             this.position.Y = position.Y;
+            //changing direction based on rotation
+            direction = new Vector3((float)Math.Cos(MathHelper.ToRadians(initialRotation) - rotation), -(float)Math.Sin(MathHelper.ToRadians(initialRotation) - rotation), 0);
             //spriteBatch.Draw(spritesInStack[2].sprite, new Vector2(position.X, position.Y), spritesInStack[2].rect, Color.White);
             for (int i = 0; i < spritesInStack.Count; i++)
             {
                 spriteBatch.Draw(spritesInStack[i].sprite, new Vector2(position.X, position.Y - (i * spread)), spritesInStack[i].rect, Color.White, rotation, new Vector2(spritesInStack[i].rect.Width / 2, spritesInStack[i].rect.Height / 2), scale, SpriteEffects.None, 0);
-
             }
         }
     }
