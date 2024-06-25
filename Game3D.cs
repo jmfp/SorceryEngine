@@ -22,9 +22,10 @@ namespace Sorcery
          0.0f,  0.5f, 0.0f  //Top vertex
         };
         int VertexBufferObject;
+        int VertexArrayObject;
         Shader vertShader, fragShader;
         //testing primitives
-        Triangle3D testTri;
+        //Triangle3D testTri;
         public Game3D(int width, int height, string title) : base(GameWindowSettings.Default, new NativeWindowSettings() { Size = (width, height), Title = title }) {
             //center screen on monitor
             this.CenterWindow(new Vector2i(width, height));
@@ -58,28 +59,38 @@ namespace Sorcery
             GL.BufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vertices, BufferUsageHint.StaticDraw);
 
             //vao
-            int VertexArrayObject = GL.GenVertexArray();
+            //int VertexArrayObject = GL.GenVertexArray();
+            VertexArrayObject = GL.GenVertexArray();
             GL.BindVertexArray(VertexArrayObject);
             GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), 0);
             GL.EnableVertexAttribArray(0);
+            vertShader.Use();
+            fragShader.Use();
             GL.BindBuffer(BufferTarget.ArrayBuffer, VertexBufferObject);
             GL.BufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vertices, BufferUsageHint.StaticDraw);
 
             GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), 0);
-            GL.EnableVertexAttribArray(0);
-
-            vertShader.Use();
-            fragShader.Use();
 
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
             GL.DeleteBuffer(VertexBufferObject);
             //code here
-            SwapBuffers();
+            //SwapBuffers();
         }
 
         protected override void OnUnload()
         {
             base.OnUnload();
+            // Unbind all the resources by binding the targets to 0/null.
+            GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+            GL.BindVertexArray(0);
+            GL.UseProgram(0);
+
+            // Delete all the resources.
+            GL.DeleteBuffer(VertexBufferObject);
+            GL.DeleteVertexArray(VertexArrayObject);
+
+            GL.DeleteProgram(vertShader.handle);
+            GL.DeleteProgram(fragShader.handle);
             vertShader.Dispose();
             fragShader.Dispose();
         }
@@ -88,6 +99,14 @@ namespace Sorcery
         {
             //called every frame, used for drawing onto the screen
             base.OnRenderFrame(args);
+            GL.Clear(ClearBufferMask.ColorBufferBit);
+            vertShader.Use();
+            fragShader.Use();
+            // Bind the VAO
+            GL.BindVertexArray(VertexArrayObject);
+            //GL.BindVertexArray(VertexArrayObject);
+            GL.DrawArrays(PrimitiveType.Triangles, 0, 3);
+            SwapBuffers();
         }
 
         protected override void OnUpdateFrame(FrameEventArgs args)

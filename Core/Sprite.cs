@@ -3,7 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 
 namespace Sorcery.Core{
     public class SpriteRenderer : Component{
@@ -17,7 +19,7 @@ namespace Sorcery.Core{
             this.imageDimensions = imageDimensions;
             this.imagePath = imagePath;
             this.name = name;
-            sprite = Texture2D.FromFile(graphicsDevice, imagePath);
+            sprite = Texture2D.FromFile(graphicsDevice, Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), imagePath));
         }
 
         public virtual void Draw(SpriteBatch spriteBatch){
@@ -49,7 +51,7 @@ namespace Sorcery.Core{
         List<Rectangle> rects = new List<Rectangle>();
         public SpriteSheet(string name, string imagePath, GraphicsDevice graphicsDevice, Vector2 dimensions, Vector2 tileDimensions){
             this.name = name;
-            this.imagePath = imagePath;
+            this.imagePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), imagePath);
             this.dimensions = dimensions;
             this.tileDimensions = tileDimensions;
             this.graphicsDevice = graphicsDevice;

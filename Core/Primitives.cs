@@ -31,11 +31,11 @@ namespace Sorcery.Core{
             //create shader program
             shaderProgram = GL.CreateProgram();
             vertexShader = GL.CreateShader(ShaderType.VertexShader);
-            Shader vert = new Shader("Default.vert");
+            Shader vert = new Shader("Default.vert", ShaderType.VertexShader);
             GL.ShaderSource(vertexShader, vert.source);
             GL.CompileShader(vertexShader);
             fragmentShader = GL.CreateShader(ShaderType.FragmentShader);
-            Shader frag = new Shader("Default.frag");
+            Shader frag = new Shader("Default.frag", ShaderType.FragmentShader);
             GL.ShaderSource(fragmentShader, frag.source);
             GL.CompileShader(fragmentShader);
         }

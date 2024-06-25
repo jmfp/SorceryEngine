@@ -1,5 +1,5 @@
 ﻿class Program{
-    static bool editor = false;
+    static bool editor = true;
     static void Main(string[] args){
         if(editor){
             using var game = new Sorcery.Editor();

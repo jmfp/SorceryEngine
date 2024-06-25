@@ -48,6 +48,18 @@
               "target": "Package",
               "version": "[1.90.1.1, )"
             },
+            "Microsoft.NET.ILLink.Analyzers": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.100-1.23401.1, )",
+              "autoReferenced": true
+            },
+            "Microsoft.NET.ILLink.Tasks": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.100-1.23401.1, )",
+              "autoReferenced": true
+            },
             "MonoGame.Content.Builder.Task": {
               "target": "Package",
               "version": "[3.8.1.303, )"
@@ -74,15 +86,7 @@
               "version": "[6.0.31, 6.0.31]"
             },
             {
-              "name": "Microsoft.AspNetCore.App.Runtime.osx-arm64",
-              "version": "[6.0.31, 6.0.31]"
-            },
-            {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.31, 6.0.31]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Runtime.osx-arm64",
               "version": "[6.0.31, 6.0.31]"
             }
           ],
@@ -95,7 +99,7 @@
         }
       },
       "runtimes": {
-        "osx-arm64": {
+        "osx-x64": {
           "#import": []
         }
       }
@@ -171,7 +175,7 @@
         }
       },
       "runtimes": {
-        "osx-arm64": {
+        "osx-x64": {
           "#import": []
         }
       }
@@ -223,6 +227,18 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.NET.ILLink.Analyzers": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.100-1.23401.1, )",
+              "autoReferenced": true
+            },
+            "Microsoft.NET.ILLink.Tasks": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.100-1.23401.1, )",
+              "autoReferenced": true
+            },
             "MonoGame.Content.Builder.Task": {
               "target": "Package",
               "version": "[3.8.1.303, )"
@@ -257,11 +273,11 @@
               "version": "[6.0.31, 6.0.31]"
             },
             {
-              "name": "Microsoft.AspNetCore.App.Runtime.osx-arm64",
+              "name": "Microsoft.AspNetCore.App.Runtime.osx-x64",
               "version": "[6.0.31, 6.0.31]"
             },
             {
-              "name": "Microsoft.NETCore.App.Host.osx-arm64",
+              "name": "Microsoft.NETCore.App.Host.osx-x64",
               "version": "[6.0.31, 6.0.31]"
             },
             {
@@ -269,7 +285,7 @@
               "version": "[6.0.31, 6.0.31]"
             },
             {
-              "name": "Microsoft.NETCore.App.Runtime.osx-arm64",
+              "name": "Microsoft.NETCore.App.Runtime.osx-x64",
               "version": "[6.0.31, 6.0.31]"
             }
           ],
@@ -282,7 +298,7 @@
         }
       },
       "runtimes": {
-        "osx-arm64": {
+        "osx-x64": {
           "#import": []
         }
       }

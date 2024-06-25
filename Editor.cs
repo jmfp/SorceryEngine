@@ -8,6 +8,7 @@ using ImGuiNET;
 using Sorcery.Core;
 using Sorcery.Scenes;
 using System.Reflection;
+using System.IO;
 
 namespace Sorcery;
 
@@ -135,7 +136,7 @@ public class Editor : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
         // TODO: use this.Content to load your game content here
-        testTexture = Texture2D.FromFile(GraphicsDevice, "Content/Assets/Sprites/demon.png");
+        testTexture = Texture2D.FromFile(GraphicsDevice, "/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Release/net6.0/osx-x64/Content/Assets/Sprites/demon.png");
     }
 
     protected override void Update(GameTime gameTime)

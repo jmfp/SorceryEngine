@@ -219,3 +219,7 @@
 /Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/obj/Release/net6.0/osx-x64/Sorcery.pdb
 /Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/obj/Release/net6.0/osx-x64/Sorcery.genruntimeconfig.cache
 /Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/obj/Release/net6.0/osx-x64/ref/Sorcery.dll
+/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Release/net6.0/osx-x64/Content/Assets/Fonts/rainyhearts.ttf
+/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Release/net6.0/osx-x64/Content/Shaders/Default.frag
+/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Release/net6.0/osx-x64/Content/Shaders/Default.vert
+/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Release/net6.0/osx-x64/Content/Assets/Sprites/GreenBigCar.png

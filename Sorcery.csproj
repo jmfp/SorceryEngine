@@ -21,6 +21,7 @@
     <None Remove="Icon.bmp" />
     <None Remove="Content\Shaders\" />
     <None Remove="Content\bin\DesktopGL\Content\Assets\Scripts\" />
+    <None Remove="Content\bin\DesktopGL\Content\Shaders\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
@@ -39,6 +40,7 @@
   <ItemGroup>
     <Folder Include="Content\Shaders\" />
     <Folder Include="Content\bin\DesktopGL\Content\Assets\Scripts\" />
+    <Folder Include="Content\bin\DesktopGL\Content\Shaders\" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />

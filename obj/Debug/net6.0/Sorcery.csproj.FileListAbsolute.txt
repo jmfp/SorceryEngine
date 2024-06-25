@@ -56,5 +56,9 @@
 /Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Debug/net6.0/Content/Assets/Sprites/demon.aseprite
 /Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Debug/net6.0/Content/Assets/Sprites/demon.png
 /Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Debug/net6.0/Content/Assets/Sprites/techplat1.png
-/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/obj/Debug/net6.0/Sorcery.csproj.CopyComplete
 /Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Debug/net6.0/Content/Assets/Fonts/rainyhearts.ttf
+/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Debug/net6.0/Content/Shaders/Default.frag
+/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Debug/net6.0/Content/Shaders/Default.vert
+/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Debug/net6.0/Content/Assets/Sprites/GreenBigCar.png
+/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/obj/Debug/net6.0/Sorcery.sourcelink.json
+/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/obj/Debug/net6.0/Sorcery.csproj.Up2Date

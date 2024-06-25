@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "86x1u4kEk54=",
+  "dgSpecHash": "AUXMPAkPz/A=",
   "success": true,
   "projectFilePath": "/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/Sorcery.csproj",
   "expectedPackageFiles": [
     "/Users/jesseprice/.nuget/packages/imgui.net/1.90.1.1/imgui.net.1.90.1.1.nupkg.sha512",
+    "/Users/jesseprice/.nuget/packages/microsoft.net.illink.analyzers/7.0.100-1.23401.1/microsoft.net.illink.analyzers.7.0.100-1.23401.1.nupkg.sha512",
+    "/Users/jesseprice/.nuget/packages/microsoft.net.illink.tasks/7.0.100-1.23401.1/microsoft.net.illink.tasks.7.0.100-1.23401.1.nupkg.sha512",
     "/Users/jesseprice/.nuget/packages/microsoft.netcore.platforms/5.0.0/microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "/Users/jesseprice/.nuget/packages/microsoft.win32.systemevents/5.0.0/microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "/Users/jesseprice/.nuget/packages/monogame.content.builder.task/3.8.1.303/monogame.content.builder.task.3.8.1.303.nupkg.sha512",
@@ -26,10 +28,10 @@
     "/Users/jesseprice/.nuget/packages/system.numerics.vectors/4.4.0/system.numerics.vectors.4.4.0.nupkg.sha512",
     "/Users/jesseprice/.nuget/packages/system.runtime.compilerservices.unsafe/5.0.0/system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
     "/Users/jesseprice/.nuget/packages/microsoft.netcore.app.ref/6.0.31/microsoft.netcore.app.ref.6.0.31.nupkg.sha512",
-    "/Users/jesseprice/.nuget/packages/microsoft.netcore.app.runtime.osx-arm64/6.0.31/microsoft.netcore.app.runtime.osx-arm64.6.0.31.nupkg.sha512",
+    "/Users/jesseprice/.nuget/packages/microsoft.netcore.app.runtime.osx-x64/6.0.31/microsoft.netcore.app.runtime.osx-x64.6.0.31.nupkg.sha512",
     "/Users/jesseprice/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.31/microsoft.aspnetcore.app.ref.6.0.31.nupkg.sha512",
-    "/Users/jesseprice/.nuget/packages/microsoft.aspnetcore.app.runtime.osx-arm64/6.0.31/microsoft.aspnetcore.app.runtime.osx-arm64.6.0.31.nupkg.sha512",
-    "/Users/jesseprice/.nuget/packages/microsoft.netcore.app.host.osx-arm64/6.0.31/microsoft.netcore.app.host.osx-arm64.6.0.31.nupkg.sha512"
+    "/Users/jesseprice/.nuget/packages/microsoft.aspnetcore.app.runtime.osx-x64/6.0.31/microsoft.aspnetcore.app.runtime.osx-x64.6.0.31.nupkg.sha512",
+    "/Users/jesseprice/.nuget/packages/microsoft.netcore.app.host.osx-x64/6.0.31/microsoft.netcore.app.host.osx-x64.6.0.31.nupkg.sha512"
   ],
   "logs": []
 }
