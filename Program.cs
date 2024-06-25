@@ -1,11 +1,11 @@
 ﻿class Program{
-    static bool editor = true;
+    static bool editor = false;
     static void Main(string[] args){
         if(editor){
             using var game = new Sorcery.Editor();
             game.Run();
         }else{
-            using var game = new Sorcery.Game3D(800, 800);
+            using var game = new Sorcery.Game3D(800, 800, "Sorcery");
             game.Run();
         }
     }

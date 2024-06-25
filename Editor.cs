@@ -123,7 +123,7 @@ public class Editor : Game
             tileMapEditor.SelectTile(currentScene.tiles[0]);
             Console.WriteLine(currentScene.tiles.Count);
         //testing sprite stacks
-        stack = new SpriteStack(new SpriteSheet("test stack", "Content/Assets/Sprites/GreenBigCar.png", GraphicsDevice, new Vector2(10, 1), new Vector2(16, 16)), stackRotation, 180, 2, 4);
+        stack = new SpriteStack(new SpriteSheet("test stack", "Content/Assets/Sprites/GreenBigCar.png", GraphicsDevice, new Vector2(10, 1), new Vector2(16, 16)), stackRotation, 180, 2, 3);
         stack.AddComponent(new Input(1));
         currentScene.gameObjects.Add(stack);
         input = stack.GetComponent<Input>() as Input;

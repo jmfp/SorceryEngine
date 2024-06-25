@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenTK.Graphics.OpenGL4;
+using OpenTK.Windowing.GraphicsLibraryFramework;
 using Sorcery.Core;
 
 namespace Sorcery
@@ -15,14 +16,27 @@ namespace Sorcery
     public class Game3D : GameWindow
     {
         public int width, height;
+        float[] vertices = {
+        -0.5f, -0.5f, 0.0f, //Bottom-left vertex
+         0.5f, -0.5f, 0.0f, //Bottom-right vertex
+         0.0f,  0.5f, 0.0f  //Top vertex
+        };
+        int VertexBufferObject;
+        Shader vertShader, fragShader;
         //testing primitives
         Triangle3D testTri;
-        public Game3D(int width, int height) : base(GameWindowSettings.Default, NativeWindowSettings.Default){
+        public Game3D(int width, int height, string title) : base(GameWindowSettings.Default, new NativeWindowSettings() { Size = (width, height), Title = title }) {
             //center screen on monitor
             this.CenterWindow(new Vector2i(width, height));
             this.width = width;
             this.height = height;
         }
+        //public Game3D(int width, int height) : base(GameWindowSettings.Default, NativeWindowSettings.Default){
+        //    //center screen on monitor
+        //    this.CenterWindow(new Vector2i(width, height));
+        //    this.width = width;
+        //    this.height = height;
+        //}
 
         protected override void OnResize(ResizeEventArgs e)
         {
@@ -35,46 +49,55 @@ namespace Sorcery
         protected override void OnLoad()
         {
             base.OnLoad();
-            //loading a triangle
-            testTri = new Triangle3D();
-            testTri.Setup();
-            GL.AttachShader(testTri.shaderProgram, testTri.vertexShader);
-            GL.AttachShader(testTri.shaderProgram, testTri.fragmentShader);
-            GL.LinkProgram(testTri.shaderProgram);
+            //shaders
+            vertShader = new Shader("Content/Shaders/Default.vert", ShaderType.VertexShader);
+            fragShader = new Shader("Content/Shaders/Default.frag", ShaderType.FragmentShader);
+            GL.ClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+            VertexBufferObject = GL.GenBuffer();
+            GL.BindBuffer(BufferTarget.ArrayBuffer, VertexBufferObject);
+            GL.BufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vertices, BufferUsageHint.StaticDraw);
 
-            //delete shaders
-            GL.DeleteShader(testTri.vertexShader);
-            GL.DeleteShader(testTri.fragmentShader);
+            //vao
+            int VertexArrayObject = GL.GenVertexArray();
+            GL.BindVertexArray(VertexArrayObject);
+            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), 0);
+            GL.EnableVertexAttribArray(0);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, VertexBufferObject);
+            GL.BufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vertices, BufferUsageHint.StaticDraw);
+
+            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), 0);
+            GL.EnableVertexAttribArray(0);
+
+            vertShader.Use();
+            fragShader.Use();
+
+            GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+            GL.DeleteBuffer(VertexBufferObject);
+            //code here
+            SwapBuffers();
         }
 
         protected override void OnUnload()
         {
             base.OnUnload();
-            GL.DeleteBuffer(testTri.vbo);
-            GL.DeleteVertexArray(testTri.vao);
-            GL.DeleteProgram(testTri.shaderProgram);
+            vertShader.Dispose();
+            fragShader.Dispose();
         }
 
         protected override void OnRenderFrame(FrameEventArgs args)
         {
             //called every frame, used for drawing onto the screen
-
-            GL.ClearColor(0f, 0.3f, 1f, 1f);
-            GL.Clear(ClearBufferMask.ColorBufferBit);
-
-            //draw here
-
-            GL.UseProgram(testTri.shaderProgram);
-            GL.BindVertexArray(testTri.vao);
-            GL.DrawArrays(PrimitiveType.Triangles, 0, 3);
-
-            Context.SwapBuffers();
             base.OnRenderFrame(args);
         }
 
         protected override void OnUpdateFrame(FrameEventArgs args)
         {
             base.OnUpdateFrame(args);
+            //polling input
+            if (KeyboardState.IsKeyDown(Keys.Escape))
+            {
+                Close();
+            }
         }
     }
 
