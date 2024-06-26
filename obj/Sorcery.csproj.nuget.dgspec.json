@@ -48,18 +48,6 @@
               "target": "Package",
               "version": "[1.90.1.1, )"
             },
-            "Microsoft.NET.ILLink.Analyzers": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[7.0.100-1.23401.1, )",
-              "autoReferenced": true
-            },
-            "Microsoft.NET.ILLink.Tasks": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[7.0.100-1.23401.1, )",
-              "autoReferenced": true
-            },
             "MonoGame.Content.Builder.Task": {
               "target": "Package",
               "version": "[3.8.1.303, )"
@@ -96,11 +84,6 @@
             }
           },
           "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.301/RuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "osx-x64": {
-          "#import": []
         }
       }
     },
@@ -173,11 +156,6 @@
           "warn": true,
           "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.301/RuntimeIdentifierGraph.json"
         }
-      },
-      "runtimes": {
-        "osx-x64": {
-          "#import": []
-        }
       }
     },
     "/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/Sorcery.csproj": {
@@ -227,17 +205,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Microsoft.NET.ILLink.Analyzers": {
-              "suppressParent": "All",
+            "MonoGame.Aseprite": {
               "target": "Package",
-              "version": "[7.0.100-1.23401.1, )",
-              "autoReferenced": true
-            },
-            "Microsoft.NET.ILLink.Tasks": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[7.0.100-1.23401.1, )",
-              "autoReferenced": true
+              "version": "[6.0.5, )"
             },
             "MonoGame.Content.Builder.Task": {
               "target": "Package",
@@ -273,19 +243,11 @@
               "version": "[6.0.31, 6.0.31]"
             },
             {
-              "name": "Microsoft.AspNetCore.App.Runtime.osx-x64",
-              "version": "[6.0.31, 6.0.31]"
-            },
-            {
               "name": "Microsoft.NETCore.App.Host.osx-x64",
               "version": "[6.0.31, 6.0.31]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.31, 6.0.31]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Runtime.osx-x64",
               "version": "[6.0.31, 6.0.31]"
             }
           ],
@@ -295,11 +257,6 @@
             }
           },
           "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.301/RuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "osx-x64": {
-          "#import": []
         }
       }
     }

@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "Sorcery/1.0.0": {
         "dependencies": {
+          "MonoGame.Aseprite": "6.0.5",
           "MonoGame.Content.Builder.Task": "3.8.1.303",
           "MonoGame.Framework.DesktopGL": "3.8.1.303",
           "MonoGame.ImGuiNet": "1.1.0",
@@ -18,6 +19,14 @@
         },
         "runtime": {
           "Sorcery.dll": {}
+        }
+      },
+      "AsepriteDotNet/1.8.1": {
+        "runtime": {
+          "lib/net6.0/AsepriteDotNet.dll": {
+            "assemblyVersion": "1.8.1.0",
+            "fileVersion": "1.8.1.0"
+          }
         }
       },
       "ImGui.NET/1.90.1.1": {
@@ -77,6 +86,17 @@
             "assetType": "runtime",
             "assemblyVersion": "5.0.0.0",
             "fileVersion": "5.0.20.51904"
+          }
+        }
+      },
+      "MonoGame.Aseprite/6.0.5": {
+        "dependencies": {
+          "AsepriteDotNet": "1.8.1"
+        },
+        "runtime": {
+          "lib/net6.0/MonoGame.Aseprite.dll": {
+            "assemblyVersion": "6.0.5.0",
+            "fileVersion": "6.0.5.0"
           }
         }
       },
@@ -346,6 +366,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "AsepriteDotNet/1.8.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-I0lIe23bIO9T2bicSuT/9EmsKM72sN8YSzDY/Y23NaK/abohN4IZA2OZrT1Db4S2Al+gS0MArT9LudvFUG5fDQ==",
+      "path": "asepritedotnet/1.8.1",
+      "hashPath": "asepritedotnet.1.8.1.nupkg.sha512"
+    },
     "ImGui.NET/1.90.1.1": {
       "type": "package",
       "serviceable": true,
@@ -366,6 +393,13 @@
       "sha512": "sha512-Bh6blKG8VAKvXiLe2L+sEsn62nc1Ij34MrNxepD2OCrS5cpCwQa9MeLyhVQPQ/R4Wlzwuy6wMK8hLb11QPDRsQ==",
       "path": "microsoft.win32.systemevents/5.0.0",
       "hashPath": "microsoft.win32.systemevents.5.0.0.nupkg.sha512"
+    },
+    "MonoGame.Aseprite/6.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kODTbl9gMf5XbY6SB37JTc//hbCSL6m5zrRn+pdnVtQTcLAa5MIppXuuNW1p29RINdhX0oxJpDATxtP3g87Y+A==",
+      "path": "monogame.aseprite/6.0.5",
+      "hashPath": "monogame.aseprite.6.0.5.nupkg.sha512"
     },
     "MonoGame.Content.Builder.Task/3.8.1.303": {
       "type": "package",

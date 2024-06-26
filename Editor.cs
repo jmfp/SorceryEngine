@@ -47,6 +47,9 @@ public class Editor : Game
     SpriteStack stack;
     float stackRotation = 0;
 
+    //testing shaders
+    Effect testEffect;
+
     ImGuiRenderer GuiRenderer;
     ImGuiIOPtr io;
 
@@ -134,6 +137,8 @@ public class Editor : Game
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+        testEffect = Content.Load<Effect>("Pixel");
 
         // TODO: use this.Content to load your game content here
         testTexture = Texture2D.FromFile(GraphicsDevice, "/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Release/net6.0/osx-x64/Content/Assets/Sprites/demon.png");
@@ -342,7 +347,7 @@ public class Editor : Game
         GraphicsDevice.DepthStencilState = new DepthStencilState() { DepthBufferEnable = true };
         // Draw the scene
         GraphicsDevice.Clear(Color.CornflowerBlue);
-        _spriteBatch.Begin(SpriteSortMode.BackToFront, transformMatrix: camera.Transform, samplerState: SamplerState.PointClamp);
+        _spriteBatch.Begin(SpriteSortMode.BackToFront, transformMatrix: camera.Transform, samplerState: SamplerState.PointClamp, effect: testEffect);
         //draw tilemap
         TileMap tMap = currentScene.gameObjects[2].GetComponent<TileMap>() as TileMap;
         tMap.Draw(_spriteBatch);
