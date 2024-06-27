@@ -19,3 +19,10 @@
 /processorParam:DebugMode=Auto
 /build:Pixel.fx
 
+#begin PixelFont.spritefont
+/importer:FontDescriptionImporter
+/processor:LocalizedFontProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:PixelFont.spritefont
+

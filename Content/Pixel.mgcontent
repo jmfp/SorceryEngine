@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/Content/Pixel.fx</SourceFile>
+  <SourceTime>2022-07-26T07:44:00-04:00</SourceTime>
+  <DestFile>/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/Content/Pixel.xnb</DestFile>
+  <DestTime>2024-06-26T23:21:26.4493587-04:00</DestTime>
+  <Importer>EffectImporter</Importer>
+  <ImporterTime>2022-07-26T07:44:56-04:00</ImporterTime>
+  <Processor>EffectProcessor</Processor>
+  <ProcessorTime>2022-07-26T07:44:56-04:00</ProcessorTime>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>
