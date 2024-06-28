@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "0QA4+xs8M/M=",
+  "dgSpecHash": "7yEfB3HRupdHnD8P8ClPL+dLH3q9r3oF6m8AibsfL2h+6biZSvkL1AImGH6BDkrKKIutytMDSOTEddbhfrQy4g==",
   "success": true,
   "projectFilePath": "/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/Sorcery.csproj",
   "expectedPackageFiles": [
     "/Users/jesseprice/.nuget/packages/asepritedotnet/1.8.1/asepritedotnet.1.8.1.nupkg.sha512",
+    "/Users/jesseprice/.nuget/packages/cyotek.drawing.bitmapfont/2.0.1/cyotek.drawing.bitmapfont.2.0.1.nupkg.sha512",
     "/Users/jesseprice/.nuget/packages/imgui.net/1.90.1.1/imgui.net.1.90.1.1.nupkg.sha512",
     "/Users/jesseprice/.nuget/packages/microsoft.netcore.platforms/5.0.0/microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "/Users/jesseprice/.nuget/packages/microsoft.win32.systemevents/5.0.0/microsoft.win32.systemevents.5.0.0.nupkg.sha512",
@@ -23,13 +24,13 @@
     "/Users/jesseprice/.nuget/packages/opentk.windowing.common/4.8.2/opentk.windowing.common.4.8.2.nupkg.sha512",
     "/Users/jesseprice/.nuget/packages/opentk.windowing.desktop/4.8.2/opentk.windowing.desktop.4.8.2.nupkg.sha512",
     "/Users/jesseprice/.nuget/packages/opentk.windowing.graphicslibraryframework/4.8.2/opentk.windowing.graphicslibraryframework.4.8.2.nupkg.sha512",
+    "/Users/jesseprice/.nuget/packages/spritefontplus/0.9.2/spritefontplus.0.9.2.nupkg.sha512",
+    "/Users/jesseprice/.nuget/packages/stbimagesharp/2.22.4/stbimagesharp.2.22.4.nupkg.sha512",
+    "/Users/jesseprice/.nuget/packages/stbtruetypesharp/1.24.7/stbtruetypesharp.1.24.7.nupkg.sha512",
     "/Users/jesseprice/.nuget/packages/system.buffers/4.4.0/system.buffers.4.4.0.nupkg.sha512",
     "/Users/jesseprice/.nuget/packages/system.drawing.common/5.0.2/system.drawing.common.5.0.2.nupkg.sha512",
     "/Users/jesseprice/.nuget/packages/system.numerics.vectors/4.4.0/system.numerics.vectors.4.4.0.nupkg.sha512",
-    "/Users/jesseprice/.nuget/packages/system.runtime.compilerservices.unsafe/5.0.0/system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
-    "/Users/jesseprice/.nuget/packages/microsoft.netcore.app.ref/6.0.31/microsoft.netcore.app.ref.6.0.31.nupkg.sha512",
-    "/Users/jesseprice/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.31/microsoft.aspnetcore.app.ref.6.0.31.nupkg.sha512",
-    "/Users/jesseprice/.nuget/packages/microsoft.netcore.app.host.osx-x64/6.0.31/microsoft.netcore.app.host.osx-x64.6.0.31.nupkg.sha512"
+    "/Users/jesseprice/.nuget/packages/system.runtime.compilerservices.unsafe/5.0.0/system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }

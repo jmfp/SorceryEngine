@@ -76,6 +76,9 @@
 /Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Debug/net6.0/Content/bin/DesktopGL/Content/Assets/Audio/Desktop/Master.bank
 /Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Debug/net6.0/Content/bin/DesktopGL/Content/Assets/Audio/Desktop/Master.strings.bank
 /Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Debug/net6.0/Content/bin/DesktopGL/Content/Assets/Audio/Desktop/SFX.bank
-/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/obj/Debug/net6.0/Sorcery.sourcelink.json
-/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/obj/Debug/net6.0/Sorcery.csproj.Up2Date
 /Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Debug/net6.0/Content/PixelFont.xnb
+/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/obj/Debug/net6.0/Sorcery.csproj.CopyComplete
+/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Debug/net6.0/Cyotek.Drawing.BitmapFont.dll
+/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Debug/net6.0/SpriteFontPlus.dll
+/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Debug/net6.0/StbImageSharp.dll
+/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Debug/net6.0/StbTrueTypeSharp.dll

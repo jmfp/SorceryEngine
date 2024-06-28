@@ -142,7 +142,7 @@ public class Editor : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
         testEffect = Content.Load<Effect>("Pixel");
-        testText = new Text("PixelFont", this);
+        testText = new Text("rainyhearts", GraphicsDevice);
 
         // TODO: use this.Content to load your game content here
         testTexture = Texture2D.FromFile(GraphicsDevice, "/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Release/net6.0/osx-x64/Content/Assets/Sprites/demon.png");
@@ -364,7 +364,7 @@ public class Editor : Game
         //testing sprite stacks
         stack.Draw(_spriteBatch, new Vector2(stack.position.X, stack.position.Y));
         //testing text
-        testText.Draw(_spriteBatch, "i", Vector2.Zero, Color.White);
+        testText.Draw(_spriteBatch, "Hello, World", Vector2.Zero, Color.LightCoral);
         //currentScene.gameObjects[1].components[0].Draw(_spriteBatch);
         _spriteBatch.End();
         // Drop the render target

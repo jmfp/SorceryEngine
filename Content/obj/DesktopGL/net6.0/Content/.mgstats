@@ -1,3 +1,3 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
 "/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/Content/Pixel.fx","/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/Content/bin/DesktopGL/Content/Pixel.xnb","EffectProcessor","CompiledEffectContent",658,598,8.97315
-"/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/Content/PixelFont.spritefont","/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/Content/bin/DesktopGL/Content/PixelFont.xnb","LocalizedFontProcessor","SpriteFontContent",2433,937,0.375881
+"/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/Content/PixelFont.spritefont","/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/Content/bin/DesktopGL/Content/PixelFont.xnb","LocalizedFontProcessor","SpriteFontContent",2427,937,0.259849

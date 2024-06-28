@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using SpriteFontPlus;
+using System.IO;
 
 namespace Sorcery.Core
 {
@@ -14,21 +16,38 @@ namespace Sorcery.Core
 
 	public class Text
 	{
-		SpriteFont font;
+		public SpriteFont font;
 		string fontName;
-		Game game;
+		GraphicsDevice graphicsDevice;
+		public int fontSize;
 
-		public Text(string fontName, Game game)
+
+        public Text(string fontName, GraphicsDevice graphicsDevice, int fontSize = 24)
 		{
 			this.fontName = fontName;
-			this.game = game;
+			this.graphicsDevice = graphicsDevice;
+			this.fontSize = fontSize;
 			Load();
 		}
 
 		public SpriteFont Load()
 		{
-			font = game.Content.Load<SpriteFont>(fontName);
-			return font;
+            var fontBakeResult = TtfFontBaker.Bake(File.ReadAllBytes(@"Content/Assets/Fonts/" + fontName + ".ttf"),
+
+                fontSize,
+                1024,
+                1024,
+                new[]
+                {
+                    CharacterRange.BasicLatin,
+                    CharacterRange.Latin1Supplement,
+                    CharacterRange.LatinExtendedA,
+                    CharacterRange.Cyrillic
+                });
+            font = fontBakeResult.CreateSpriteFont(graphicsDevice);
+            return font;
+
+			
 		}
 
 		public void Draw(SpriteBatch spriteBatch, string text, Vector2 position, Color color)
