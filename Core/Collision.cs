@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGame;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,17 @@ namespace Sorcery.Core
         {
             this.rect = new Rectangle(0, 0, texture.Width - (int)Math.Round(offset.X), texture.Height - (int)Math.Round(offset.Y));
             this.name = name;
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            Primitives2D.DrawRectangle(spriteBatch, rect, Color.LightSeaGreen);
+        }
+
+        public void Update()
+        {
+            rect.X = (int)parent.position.X;
+            rect.Y = (int)parent.position.Y;
         }
     }
 }

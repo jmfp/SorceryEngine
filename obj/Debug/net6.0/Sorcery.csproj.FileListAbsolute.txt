@@ -82,3 +82,6 @@
 /Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Debug/net6.0/SpriteFontPlus.dll
 /Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Debug/net6.0/StbImageSharp.dll
 /Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Debug/net6.0/StbTrueTypeSharp.dll
+/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Debug/net6.0/MonoGame.Extended.dll
+/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Debug/net6.0/MonoGame.Extended.Collisions.dll
+/Users/jesseprice/Development/Video_Games/Engine/SorceryEngine/Sorcery/bin/Debug/net6.0/MonoGame.Primitives2D.dll

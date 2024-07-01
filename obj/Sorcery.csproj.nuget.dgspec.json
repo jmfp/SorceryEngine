@@ -198,9 +198,17 @@
               "target": "Package",
               "version": "[3.8.1.303, )"
             },
+            "MonoGame.Extended.Collisions": {
+              "target": "Package",
+              "version": "[3.8.0, )"
+            },
             "MonoGame.Framework.DesktopGL": {
               "target": "Package",
               "version": "[3.8.1.303, )"
+            },
+            "MonoGame.Primitives2D": {
+              "target": "Package",
+              "version": "[1.1.1, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",

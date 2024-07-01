@@ -36,6 +36,8 @@
     <PackageReference Include="OpenTK" Version="4.8.2" />
     <PackageReference Include="MonoGame.Aseprite" Version="6.0.5" />
     <PackageReference Include="SpriteFontPlus" Version="0.9.2" />
+    <PackageReference Include="MonoGame.Extended.Collisions" Version="3.8.0" />
+    <PackageReference Include="MonoGame.Primitives2D" Version="1.1.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nez\Nez.Portable\Nez.MG38.csproj" />

@@ -42,6 +42,7 @@ public class Editor : Game
 
     //testing collision
     Collision2D collision = new Collision2D();
+    SquareCollider one, two;
 
     //testing sprite stacks
     SpriteStack stack;
@@ -178,7 +179,11 @@ public class Editor : Game
         camera.Follow(stack);
 
         //testing collision
-        SquareCollider one = currentScene.gameObjects[1].GetComponent<SquareCollider>() as SquareCollider, two = currentScene.gameObjects[1].GetComponent<SquareCollider>() as SquareCollider;
+        one = currentScene.gameObjects[1].GetComponent<SquareCollider>() as SquareCollider;
+        two = currentScene.gameObjects[2].GetComponent<SquareCollider>() as SquareCollider;
+        one.Update();
+        two.Update();
+
         if (collision.CollisionCheck(one.rect, two.rect))
         {
             Console.WriteLine("Collision");
@@ -359,6 +364,9 @@ public class Editor : Game
         sprites[1].Draw(_spriteBatch, new Vector2(116, 116));
         SpriteRenderer ren = currentScene.gameObjects[1].GetComponent<SpriteRenderer>() as SpriteRenderer;
         ren.Draw(_spriteBatch);
+        //testing collision
+        one.Draw(_spriteBatch);
+        two.Draw(_spriteBatch);
         SpriteRenderer ren2 = currentScene.gameObjects[2].GetComponent<SpriteRenderer>() as SpriteRenderer;
         ren2.Draw(_spriteBatch);
         //testing sprite stacks
