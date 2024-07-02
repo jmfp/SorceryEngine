@@ -7,6 +7,7 @@ namespace Sorcery.Core{
         public Vector2 movementVector = new Vector2(0, 0);
         public float maxSpeed;
         public float minSpeed;
+        public float changeX = 0, changeY = 0;
         public bool isPressed;
         //directions for animator in bools for north, east, south, westt
         public bool[] directions = new bool[4];
@@ -24,16 +25,19 @@ namespace Sorcery.Core{
             movementVector = new Vector2(0, 0);
             if(Keyboard.GetState().IsKeyDown(Keys.A)) {
                 isPressed = true;
-                movementVector.X -= maxSpeed;
+                changeX -= maxSpeed;
                 //moving west
                 directions[3] = true;
             }
             if(Keyboard.GetState().IsKeyDown(Keys.D)) {
                 isPressed = true;
-                movementVector.X += maxSpeed;
+                changeX += maxSpeed;
                 //moving east
                 directions[1] = true;
             }
+
+            parent.position.X += changeX;
+
             if(Keyboard.GetState().IsKeyDown(Keys.W)) {
                 isPressed = true;
                 movementVector.Y -= maxSpeed;
@@ -46,6 +50,9 @@ namespace Sorcery.Core{
                 //moving south
                 directions[2] = true;
             }
+
+            parent.position.Y += changeY;
+
             if(Keyboard.GetState().IsKeyUp(Keys.A) && isPressed) {
                 directions[3] = false;
             }
@@ -59,8 +66,8 @@ namespace Sorcery.Core{
                 directions[2] = false;
             }
 
-            parent.position.X += movementVector.X;
-            parent.position.Y += movementVector.Y;
+            //parent.position.X += movementVector.X;
+            //parent.position.Y += movementVector.Y;
         }
 
         public void TopDown4(){

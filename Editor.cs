@@ -113,7 +113,7 @@ public class Editor : Game
             SpriteRenderer spriteRenderer2 = new SpriteRenderer("Content/Assets/Sprites/demon.png", GraphicsDevice);
             spriteRenderer2.scale = new Vector2(4, 4);
             currentScene.gameObjects[2].AddComponent(spriteRenderer2);
-            //currentScene.gameObjects[1].AddComponent(new Input(1));
+            currentScene.gameObjects[1].AddComponent(new Input(1));
             currentScene.gameObjects[2].AddComponent(new SquareCollider(spriteRenderer2.sprite, new Vector2(0, 0)));
 
         //testing spritesheets
@@ -131,10 +131,10 @@ public class Editor : Game
             tileMapEditor.SelectTile(currentScene.tiles[0]);
             Console.WriteLine(currentScene.tiles.Count);
         //testing sprite stacks
-        stack = new SpriteStack(new SpriteSheet("test stack", "Content/Assets/Sprites/GreenBigCar.png", GraphicsDevice, new Vector2(10, 1), new Vector2(16, 16)), stackRotation, 180, 2, 3);
-        stack.AddComponent(new Input(1));
+        stack = new SpriteStack(new SpriteSheet("test stack", "Content/Assets/Sprites/testvox.png", GraphicsDevice, new Vector2(1, 40), new Vector2(40, 40)), stackRotation, 180, 2, 3);
+        //stack.AddComponent(new Input(1));
         currentScene.gameObjects.Add(stack);
-        input = stack.GetComponent<Input>() as Input;
+        input = currentScene.gameObjects[1].GetComponent<Input>() as Input;
         base.Initialize();
     }
 
@@ -154,7 +154,7 @@ public class Editor : Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
-        input.TopDownDrive();
+        input.TopDown8();
         //currentScene.gameObjects[1].position += new Vector3(input.movementVector.X, input.movementVector.Y, 0);
         //getting mouse position
         mousePosition = Mouse.GetState().Position.ToVector2();
@@ -174,9 +174,9 @@ public class Editor : Game
             rightClick = false;
         }
         //testing out tilemap editor
-        tileMapEditor.Update(relativeMousePos, leftClick, rightClick);
+        //tileMapEditor.Update(relativeMousePos, leftClick, rightClick);
         //camera.Follow(currentScene.gameObjects[1]);
-        camera.Follow(stack);
+        camera.Follow(currentScene.gameObjects[1]);
 
         //testing collision
         one = currentScene.gameObjects[1].GetComponent<SquareCollider>() as SquareCollider;
@@ -187,9 +187,12 @@ public class Editor : Game
         if (collision.CollisionCheck(one.rect, two.rect))
         {
             Console.WriteLine("Collision");
+            currentScene.gameObjects[1].position.X -= input.changeX;
+            currentScene.gameObjects[1].position.Y -= input.changeY;
+
         }
         float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-        //stackRotation = MathHelper.ToRadians(-24f) * deltaTime;
+        stackRotation = MathHelper.ToRadians(-24f) * deltaTime;
 
         stack.Rotate(stackRotation);
 
